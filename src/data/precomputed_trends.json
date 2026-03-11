@@ -1,0 +1,65 @@
+[
+  {
+    "language": "French",
+    "slope": -0.00021731,
+    "intercept": 4.4061,
+    "xMin": 1650,
+    "xMax": 1850
+  },
+  {
+    "language": "Latin",
+    "slope": -0.0000648,
+    "intercept": 4.0146,
+    "xMin": -50,
+    "xMax": 1250
+  },
+  {
+    "language": "Ancient Greek",
+    "slope": -0.00030861,
+    "intercept": 4.0413,
+    "xMin": -750,
+    "xMax": -350
+  },
+  {
+    "language": "Dutch",
+    "slope": -0.00016667,
+    "intercept": 4.3881,
+    "xMin": 1650,
+    "xMax": 1950
+  },
+  {
+    "language": "English",
+    "slope": 0.00001906,
+    "intercept": 4.1381,
+    "xMin": 1650,
+    "xMax": 1850
+  },
+  {
+    "language": "Italian",
+    "slope": 0.00000128,
+    "intercept": 4.0062,
+    "xMin": 1350,
+    "xMax": 1950
+  },
+  {
+    "language": "Spanish",
+    "slope": 0.00017575,
+    "intercept": 3.7568,
+    "xMin": 1550,
+    "xMax": 1850
+  },
+  {
+    "language": "German",
+    "slope": -0.00006846,
+    "intercept": 4.2194,
+    "xMin": 1750,
+    "xMax": 1950
+  },
+  {
+    "language": "Old French",
+    "slope": -0.0001929,
+    "intercept": 4.1923,
+    "xMin": 1050,
+    "xMax": 1250
+  }
+]
