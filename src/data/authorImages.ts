@@ -48,7 +48,6 @@ const authorImages: Record<string, string> = {
   'Jacob van Lennep': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/JacobVanLennepJAKruseman.jpg/330px-JacobVanLennepJAKruseman.jpg',
   'Jane Austen': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/CassandraAusten-JaneAusten%28c.1810%29_hires.jpg/330px-CassandraAusten-JaneAusten%28c.1810%29_hires.jpg',
   'Jean Froissart': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Jean-Froissart.jpg/330px-Jean-Froissart.jpg',
-  'Jean Racine': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/CassandraAusten-JaneAusten%28c.1810%29_hires.jpg/330px-CassandraAusten-JaneAusten%28c.1810%29_hires.jpg',
   'Jean Racine': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Portrait_de_Jean_Racine_d%27apr%C3%A8s_Jean-Baptiste_Santerre.jpg/330px-Portrait_de_Jean_Racine_d%27apr%C3%A8s_Jean-Baptiste_Santerre.jpg',
   'Jean-Jacques Rousseau': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Jean-Jacques_Rousseau_%28painted_portrait%29.jpg/330px-Jean-Jacques_Rousseau_%28painted_portrait%29.jpg',
   'Johann Wolfgang von Goethe': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Goethe_%28Stieler_1828%29.jpg/330px-Goethe_%28Stieler_1828%29.jpg',

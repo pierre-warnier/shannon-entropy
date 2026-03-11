@@ -37,7 +37,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
     localStorage.setItem('shannon-locale', l);
-    document.documentElement.lang = l === 'grc' ? 'el' : l;
+    document.documentElement.lang = l;
   }, []);
 
   const t = useCallback(

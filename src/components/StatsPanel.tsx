@@ -45,11 +45,6 @@ const { langAvg, corpusAvg } = computeAverages();
  * Entropy comparison as effective-possibilities ratio.
  * 0.2 bits difference = 2^0.2 ≈ +15% complexity.
  */
-function entropyPct(value: number, reference: number): string {
-  const pct = (Math.pow(2, value - reference) - 1) * 100;
-  return (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
-}
-
 function entropyPctRaw(value: number, reference: number): number {
   return (Math.pow(2, value - reference) - 1) * 100;
 }

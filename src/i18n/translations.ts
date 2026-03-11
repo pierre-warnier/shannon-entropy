@@ -6,7 +6,8 @@ export const LOCALE_LABELS: Record<Locale, string> = {
   nl: 'Nederlands',
 };
 
-type TranslationKeys = typeof fr;
+export type TranslationKey = keyof typeof fr;
+type TranslationKeys = Record<TranslationKey, string>;
 
 const fr = {
   // Nav
@@ -1110,5 +1111,3 @@ const nl: TranslationKeys = {
 };
 
 export const translations: Record<Locale, TranslationKeys> = { fr, en, nl };
-
-export type TranslationKey = keyof typeof fr;
