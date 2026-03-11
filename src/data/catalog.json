@@ -1266,5 +1266,135 @@
     "period": "20th century",
     "source": "Project Ben Yehuda",
     "textPath": "/corpora/he/agnon_hamikhtav.txt"
+  },
+  {
+    "id": "ar-quran-al-baqara",
+    "title": "Al-Baqara (Sourate de la Vache)",
+    "author": "Quran",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "7th century",
+    "source": "Tanzil.net",
+    "textPath": "/corpora/ar/quran_al_baqara.txt"
+  },
+  {
+    "id": "ar-muallaqat",
+    "title": "Al-Mu'allaqat (Les Suspendues)",
+    "author": "Pre-Islamic Poets",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "6th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/muallaqat.txt"
+  },
+  {
+    "id": "ar-abu-nuwas-poems",
+    "title": "Diwan (Poèmes choisis)",
+    "author": "Abu Nuwas",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "8th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/abu_nuwas_poems.txt"
+  },
+  {
+    "id": "ar-jahiz-bayan",
+    "title": "Al-Bayan wa-l-Tabyin",
+    "author": "Al-Jahiz",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "9th century",
+    "source": "Al-Eman",
+    "textPath": "/corpora/ar/jahiz_bayan_tabyin.txt"
+  },
+  {
+    "id": "ar-mutanabbi-diwan",
+    "title": "Diwan Al-Mutanabbi",
+    "author": "Al-Mutanabbi",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "10th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/mutanabbi_diwan.txt"
+  },
+  {
+    "id": "ar-ibn-sina-qanun",
+    "title": "Al-Qanun fi al-Tibb (Canon)",
+    "author": "Ibn Sina",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "11th century",
+    "source": "Al-Eman",
+    "textPath": "/corpora/ar/ibn_sina_qanun.txt"
+  },
+  {
+    "id": "ar-ghazali-works",
+    "title": "Ihya Ulum al-Din (extraits)",
+    "author": "Al-Ghazali",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "12th century",
+    "source": "Al-Eman",
+    "textPath": "/corpora/ar/ghazali_works.txt"
+  },
+  {
+    "id": "ar-ibn-khaldun-muqaddimah",
+    "title": "Al-Muqaddimah (Prolégomènes)",
+    "author": "Ibn Khaldun",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "14th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/ibn_khaldun_muqaddimah.txt"
+  },
+  {
+    "id": "ar-alf-layla",
+    "title": "Alf Layla wa-Layla (Mille et Une Nuits)",
+    "author": "Anonymous",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "14th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/alf_layla.txt"
+  },
+  {
+    "id": "ar-shawqi-poetry",
+    "title": "Diwan Ahmad Shawqi",
+    "author": "Ahmad Shawqi",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "20th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/shawqi_poetry.txt"
+  },
+  {
+    "id": "ar-manfaluti-nazarat",
+    "title": "Al-Nazarat",
+    "author": "Mustafa Lutfi al-Manfaluti",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "20th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/manfaluti_nazarat.txt"
+  },
+  {
+    "id": "ar-gibran-works",
+    "title": "Al-Arwah al-Mutamarrida",
+    "author": "Gibran Khalil Gibran",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "20th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/ar/gibran_works.txt"
+  },
+  {
+    "id": "ar-taha-hussein-ayyam",
+    "title": "Al-Ayyam (Les Jours)",
+    "author": "Taha Hussein",
+    "language": "Arabic",
+    "languageCode": "ar",
+    "period": "20th century",
+    "source": "Hindawi",
+    "textPath": "/corpora/ar/modern_arabic_prose.txt"
   }
 ]

@@ -42,6 +42,7 @@ interface StatEntry {
   wordEntropy: number;
   meanWordLength: number;
   vocabularyRichness: number;
+  totalWords: number;
 }
 
 function analyzeText(raw: string, langCode?: string): {
@@ -49,6 +50,7 @@ function analyzeText(raw: string, langCode?: string): {
   wordEntropy: number;
   meanWordLength: number;
   vocabularyRichness: number;
+  totalWords: number;
 } {
   const normalized = normalizeText(raw);
   const chars = tokenizeCharacters(normalized);
@@ -70,6 +72,7 @@ function analyzeText(raw: string, langCode?: string): {
     wordEntropy: Math.round(wordH * 100) / 100,
     meanWordLength: Math.round(stats.mean * 100) / 100,
     vocabularyRichness: Math.round(vocabularyRichness * 10000) / 10000,
+    totalWords,
   };
 }
 
@@ -131,7 +134,10 @@ const PERIOD_YEARS: Record<string, number> = {
   '4th century': 350,
   '5th century': 450,
   '6th century': 550,
+  '7th century': 650,
   '8th century': 750,
+  '9th century': 850,
+  '10th century': 950,
   '11th century': 1050,
   '12th century': 1150,
   '13th century': 1250,

@@ -86,32 +86,6 @@ export default function Home() {
           })()}
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-3 sm:mt-8 sm:gap-4">
-          <Link
-            to="/library"
-            className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-blue-700 sm:px-6 sm:py-3"
-          >
-            {t('home.hero.cta.library')}
-          </Link>
-          <Link
-            to="/library"
-            className="rounded-lg border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-200 transition-colors hover:border-slate-400 hover:text-white sm:px-6 sm:py-3"
-          >
-            {t('home.hero.cta.analyze')}
-          </Link>
-          <Link
-            to="/compare"
-            className="rounded-lg border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-200 transition-colors hover:border-slate-400 hover:text-white sm:px-6 sm:py-3"
-          >
-            {t('home.hero.cta.compare')}
-          </Link>
-          <Link
-            to="/formulas"
-            className="rounded-lg border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-200 transition-colors hover:border-slate-400 hover:text-white sm:px-6 sm:py-3"
-          >
-            {t('home.hero.cta.formulas')}
-          </Link>
-        </div>
       </section>
 
       {/* Bubble chart */}
@@ -256,14 +230,21 @@ export default function Home() {
               <li className="flex gap-2">
                 <span className="mt-0.5 shrink-0 text-blue-500">&#9679;</span>
                 <span>
-                  <strong>{t('home.entropy.why.fingerprint')}</strong>{' '}
+                  <strong>{t('home.entropy.why.letterH')}</strong>{' '}
+                  {t('home.entropy.why.letterH.text')}
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 shrink-0 text-purple-500">&#9679;</span>
+                <span>
+                  <strong>{t('home.entropy.why.wordH')}</strong>{' '}
                   {(() => {
-                    const parts = t('home.entropy.why.fingerprint.text').split(/\{(inflection|morphology)\}/);
-                    return parts.map((part, i) => {
-                      if (part === 'inflection')
-                        return (
+                    const parts = t('home.entropy.why.wordH.text').split(/\{inflection\}/);
+                    return parts.map((part, i, arr) =>
+                      i < arr.length - 1 ? (
+                        <span key={i}>
+                          {part}
                           <a
-                            key={i}
                             href={wikiUrl('inflection', locale)}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -271,35 +252,25 @@ export default function Home() {
                           >
                             {locale === 'fr' ? 'flexion' : locale === 'nl' ? 'flexie' : 'inflection'}
                           </a>
-                        );
-                      if (part === 'morphology')
-                        return (
-                          <a
-                            key={i}
-                            href={wikiUrl('morphology', locale)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
-                          >
-                            {locale === 'fr' ? 'morphologie' : locale === 'nl' ? 'morfologie' : 'morphology'}
-                          </a>
-                        );
-                      return <span key={i}>{part}</span>;
-                    });
+                        </span>
+                      ) : (
+                        <span key={i}>{part}</span>
+                      ),
+                    );
                   })()}
                 </span>
               </li>
               <li className="flex gap-2">
-                <span className="mt-0.5 shrink-0 text-blue-500">&#9679;</span>
+                <span className="mt-0.5 shrink-0 text-green-500">&#9679;</span>
                 <span>
                   <strong>{t('home.entropy.why.bridge')}</strong>{' '}
                   {(() => {
-                    const parts = t('home.entropy.why.bridge.text').split(/\{infoTheory\}/);
-                    return parts.map((part, i, arr) =>
-                      i < arr.length - 1 ? (
-                        <span key={i}>
-                          {part}
+                    const parts = t('home.entropy.why.bridge.text').split(/\{(infoTheory|formulas)\}/);
+                    return parts.map((part, i) => {
+                      if (part === 'infoTheory')
+                        return (
                           <a
+                            key={i}
                             href={wikiUrl('infoTheory', locale)}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -307,11 +278,15 @@ export default function Home() {
                           >
                             {t('home.focus.link')}
                           </a>
-                        </span>
-                      ) : (
-                        <span key={i}>{part}</span>
-                      ),
-                    );
+                        );
+                      if (part === 'formulas')
+                        return (
+                          <Link key={i} to="/formulas" className="text-blue-600 underline decoration-blue-200 hover:text-blue-800">
+                            {t('nav.formulas').toLowerCase()}
+                          </Link>
+                        );
+                      return <span key={i}>{part}</span>;
+                    });
                   })()}
                 </span>
               </li>
@@ -341,7 +316,8 @@ export default function Home() {
             ),
           )}
         </h3>
-        <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <div className="flex gap-4 rounded-lg border border-slate-200 bg-white p-4 shadow-sm sm:gap-6 sm:p-6">
+          <div className="min-w-0 flex-1">
           <p className="mb-3 text-sm leading-relaxed text-slate-700">
             {(() => {
               const text = t('home.focus.text1');
@@ -404,44 +380,32 @@ export default function Home() {
               });
             })()}
           </p>
-        </div>
-      </section>
-
-      {/* What can you explore? */}
-      <section className="mb-8 sm:mb-12">
-        <h3 className="mb-3 text-lg font-bold text-slate-900 sm:mb-4 sm:text-xl">
-          {t('home.explore.title')}
-        </h3>
-        <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-          {[
-            {
-              title: t('home.explore.letters.title'),
-              desc: t('home.explore.letters.desc'),
-              color: 'bg-blue-50 border-blue-200 text-blue-800',
-              to: '/analyze',
-            },
-            {
-              title: t('home.explore.entropy.title'),
-              desc: t('home.explore.entropy.desc'),
-              color: 'bg-purple-50 border-purple-200 text-purple-800',
-              to: '/formulas',
-            },
-            {
-              title: t('home.explore.compare.title'),
-              desc: t('home.explore.compare.desc'),
-              color: 'bg-green-50 border-green-200 text-green-800',
-              to: '/compare',
-            },
-          ].map((item) => (
-            <Link
-              key={item.title}
-              to={item.to}
-              className={`block rounded-lg border p-4 transition-shadow hover:shadow-md sm:p-5 ${item.color}`}
+          </div>
+          {/* DNA accent */}
+          <div className="hidden shrink-0 items-center sm:flex">
+            <svg
+              className="h-full w-10 text-blue-200/60 sm:w-14"
+              viewBox="0 0 24 48"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              preserveAspectRatio="none"
+              aria-hidden="true"
             >
-              <h4 className="mb-1.5 text-sm font-semibold sm:mb-2 sm:text-base">{item.title}</h4>
-              <p className="text-xs leading-relaxed opacity-90 sm:text-sm">{item.desc}</p>
-            </Link>
-          ))}
+              <path d="M4 0c0 6 16 6 16 12S4 18 4 24s16 6 16 12S4 30 4 36s16 6 16 12" />
+              <path d="M20 0c0 6-16 6-16 12s16 6 16 12-16 6-16 12 16 6 16 12-16 6-16 12" />
+              <line x1="4" y1="0" x2="20" y2="0" />
+              <line x1="5" y1="6" x2="19" y2="6" />
+              <line x1="4" y1="12" x2="20" y2="12" />
+              <line x1="5" y1="18" x2="19" y2="18" />
+              <line x1="4" y1="24" x2="20" y2="24" />
+              <line x1="5" y1="30" x2="19" y2="30" />
+              <line x1="4" y1="36" x2="20" y2="36" />
+              <line x1="5" y1="42" x2="19" y2="42" />
+              <line x1="4" y1="48" x2="20" y2="48" />
+            </svg>
+          </div>
         </div>
       </section>
 
@@ -474,14 +438,17 @@ export default function Home() {
         </p>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
           {[
-            { lang: 'Ancient Greek', authors: 'Homer, Plato, Sophocles', flag: '🏛️' },
-            { lang: 'Latin', authors: 'Cicero, Caesar, Virgil', flag: '🏛️' },
-            { lang: 'French', authors: 'Voltaire, Hugo, Flaubert', flag: '🇫🇷' },
-            { lang: 'Dutch', authors: 'Multatuli, Couperus, Conscience', flag: '🇳🇱' },
-            { lang: 'English', authors: 'Shakespeare, Austen, Dickens', flag: '🇬🇧' },
-            { lang: 'Italian', authors: 'Dante, Boccaccio, Manzoni', flag: '🇮🇹' },
-            { lang: 'Spanish', authors: 'Cervantes, Lope de Vega', flag: '🇪🇸' },
-            { lang: 'German', authors: 'Goethe, Kafka, Schiller', flag: '🇩🇪' },
+            { lang: 'Ancient Greek', flag: '🏛️' },
+            { lang: 'Latin', flag: '🏛️' },
+            { lang: 'French', flag: '🇫🇷' },
+            { lang: 'Old French', flag: '🏰' },
+            { lang: 'Dutch', flag: '🇳🇱' },
+            { lang: 'English', flag: '🇬🇧' },
+            { lang: 'Italian', flag: '🇮🇹' },
+            { lang: 'Spanish', flag: '🇪🇸' },
+            { lang: 'German', flag: '🇩🇪' },
+            { lang: 'Hebrew', flag: '🇮🇱' },
+            { lang: 'Arabic', flag: '🇸🇦' },
           ].map((item) => (
             <Link
               key={item.lang}
@@ -493,7 +460,9 @@ export default function Home() {
                 <p className="truncate text-xs font-semibold text-slate-800 sm:text-sm">
                   {t(`lang.${item.lang}` as Parameters<typeof t>[0])}
                 </p>
-                <p className="truncate text-[10px] text-slate-500 sm:text-xs">{item.authors}</p>
+                <p className="truncate text-[10px] text-slate-500 sm:text-xs">
+                  {t(`home.corpus.authors.${item.lang}` as Parameters<typeof t>[0])}
+                </p>
               </div>
             </Link>
           ))}

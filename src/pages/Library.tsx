@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import catalogData from '../data/catalog.json';
+import precomputedStats from '../data/precomputed_stats.json';
 import authorImages from '../data/authorImages';
 import type { CorpusMetadata } from '../types';
 import { useI18n } from '../i18n/I18nContext';
@@ -15,6 +16,18 @@ import { LengthChart } from '../charts/LengthChart';
 import { MutualInformationChart } from '../charts/MutualInformationChart';
 
 const catalog = catalogData as CorpusMetadata[];
+
+/** Word count lookup from precomputed stats */
+const wordCountMap = new Map<string, number>(
+  (precomputedStats as { id: string; totalWords?: number }[])
+    .filter((s) => s.totalWords != null)
+    .map((s) => [s.id, s.totalWords!]),
+);
+
+function formatWordCount(n: number): string {
+  if (n >= 1000) return Math.round(n / 1000) + 'k';
+  return String(n);
+}
 
 export default function Library() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -96,8 +109,10 @@ export default function Library() {
 
   const languages = useMemo(() => {
     const set = new Set(catalog.map((c) => c.language));
-    return Array.from(set).sort();
-  }, []);
+    return Array.from(set).sort((a, b) =>
+      t(`lang.${a}` as Parameters<typeof t>[0]).localeCompare(t(`lang.${b}` as Parameters<typeof t>[0])),
+    );
+  }, [t]);
 
   const filtered = useMemo(() => {
     return catalog.filter((corpus) => {
@@ -148,8 +163,19 @@ export default function Library() {
               placeholder={t('library.search')}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:py-2.5"
+              className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-10 pr-8 text-sm text-slate-900 placeholder-slate-400 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 sm:py-2.5"
             />
+            {search && (
+              <button
+                onClick={() => setSearch('')}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-0.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                aria-label="Clear search"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            )}
           </div>
           <FileUpload onTextLoaded={handleFileUpload} compact />
         </div>
@@ -229,12 +255,18 @@ export default function Library() {
                   </span>
                 </div>
                 <p className="text-xs text-slate-600 sm:text-sm">{corpus.author}</p>
-                <div className="mt-1.5 flex items-center gap-2 text-[10px] text-slate-400 sm:mt-2 sm:gap-3 sm:text-xs">
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-slate-400 sm:mt-2 sm:gap-x-3 sm:text-xs">
                   <span>{t(`lang.${corpus.language}` as Parameters<typeof t>[0])}</span>
                   <span className="text-slate-300">|</span>
                   <span>{t(`period.${corpus.period}` as Parameters<typeof t>[0])}</span>
                   <span className="text-slate-300">|</span>
                   <span className="italic">{corpus.source}</span>
+                  {wordCountMap.has(corpus.id) && (
+                    <>
+                      <span className="text-slate-300">|</span>
+                      <span>{formatWordCount(wordCountMap.get(corpus.id)!)} {t('library.words')}</span>
+                    </>
+                  )}
                 </div>
               </div>
             </button>

@@ -3,6 +3,8 @@ import { useI18n } from '../i18n/I18nContext';
 import type { AnalysisResult } from '../types';
 import precomputedStats from '../data/precomputed_stats.json';
 
+const SHORT_TEXT_THRESHOLD = 10000; // words
+
 interface StatEntry {
   language: string;
   letterEntropy: number;
@@ -67,6 +69,18 @@ export function StatsPanel({ result, language }: StatsPanelProps) {
 
   return (
     <div className="space-y-4 sm:space-y-6">
+      {/* Short text warning */}
+      {result.totalWords < SHORT_TEXT_THRESHOLD && (
+        <div className="flex items-start gap-2 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 sm:gap-3 sm:px-4 sm:py-3">
+          <svg className="mt-0.5 h-4 w-4 shrink-0 text-amber-500 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+          <p className="text-xs text-amber-800 sm:text-sm">
+            {t('stats.shortTextWarning').replace('{n}', result.totalWords.toLocaleString())}
+          </p>
+        </div>
+      )}
+
       {/* Entropy hero — front and center */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <EntropyCard

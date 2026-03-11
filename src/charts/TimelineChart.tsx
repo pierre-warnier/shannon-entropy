@@ -43,7 +43,10 @@ const PERIOD_YEARS: Record<string, number> = {
   '4th century': 350,
   '5th century': 450,
   '6th century': 550,
+  '7th century': 650,
   '8th century': 750,
+  '9th century': 850,
+  '10th century': 950,
   '11th century': 1050,
   '12th century': 1150,
   '13th century': 1250,
@@ -81,15 +84,19 @@ export function TimelineChart({
   yLabel = 'Letter Entropy (bits/char.)',
 }: TimelineChartProps) {
   const { t } = useI18n();
-  const [showTrends, setShowTrends] = useState(true);
+  const [showTrends, setShowTrends] = useState(false);
 
-  // Group by language
-  const byLang = new Map<string, TimelineEntry[]>();
+  // Group by language, sorted by translated name
+  const byLangUnsorted = new Map<string, TimelineEntry[]>();
   for (const e of entries) {
-    const arr = byLang.get(e.language) ?? [];
+    const arr = byLangUnsorted.get(e.language) ?? [];
     arr.push(e);
-    byLang.set(e.language, arr);
+    byLangUnsorted.set(e.language, arr);
   }
+  const sortedLangs = Array.from(byLangUnsorted.keys()).sort((a, b) =>
+    t(`lang.${a}`).localeCompare(t(`lang.${b}`)),
+  );
+  const byLang = new Map(sortedLangs.map((l) => [l, byLangUnsorted.get(l)!]));
 
   // Build unique tick values/labels from the data
   const periodsInData = new Set(entries.map((e) => e.period));

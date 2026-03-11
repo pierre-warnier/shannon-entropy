@@ -83,13 +83,17 @@ export function CorpusBubbleChart({
   const [showHulls, setShowHulls] = useState(true);
   const resolvedTitle = title ?? t('chart.bubbleTitle');
 
-  // Group by language for legend
-  const byLang = new Map<string, BubbleEntry[]>();
+  // Group by language for legend, sorted by translated name
+  const byLangUnsorted = new Map<string, BubbleEntry[]>();
   for (const e of entries) {
-    const arr = byLang.get(e.language) ?? [];
+    const arr = byLangUnsorted.get(e.language) ?? [];
     arr.push(e);
-    byLang.set(e.language, arr);
+    byLangUnsorted.set(e.language, arr);
   }
+  const sortedLangs = Array.from(byLangUnsorted.keys()).sort((a, b) =>
+    t(`lang.${a}`).localeCompare(t(`lang.${b}`)),
+  );
+  const byLang = new Map(sortedLangs.map((l) => [l, byLangUnsorted.get(l)!]));
 
   // Normalize bubble size: vocabulary richness → marker size (10–45)
   const allRichness = entries.map((e) => e.vocabularyRichness);
@@ -102,9 +106,12 @@ export function CorpusBubbleChart({
 
   const data: Data[] = [];
 
-  // Smooth "potato" fills behind markers
+  // Smooth "potato" fills behind markers (sorted to match legend order)
+  const sortedHulls = [...precomputedHulls].sort((a, b) =>
+    t(`lang.${a.language}`).localeCompare(t(`lang.${b.language}`)),
+  );
   if (showHulls) {
-    for (const h of precomputedHulls) {
+    for (const h of sortedHulls) {
       const rawHull = mode === 'letter' ? h.letterHull : h.wordHull;
       if (rawHull.length < 3) continue;
       const smooth = smoothClosed(rawHull);

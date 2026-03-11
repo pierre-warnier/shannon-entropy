@@ -68,5 +68,12 @@
     "intercept": 4.2563,
     "xMin": -750,
     "xMax": 1950
+  },
+  {
+    "language": "Arabic",
+    "slope": 0.00002892,
+    "intercept": 4.234,
+    "xMin": 550,
+    "xMax": 1950
   }
 ]
