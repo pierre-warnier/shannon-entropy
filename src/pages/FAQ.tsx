@@ -255,7 +255,20 @@ export default function FAQ() {
             {t('faq.h.game.title' as any)}
           </h4>
           <p className="mb-3 text-xs leading-relaxed text-purple-800 sm:text-sm">
-            {t('faq.h.game.intro' as any)}
+            {(() => {
+              const raw = t('faq.h.game.intro' as any);
+              const parts = raw.split('{binarySearch}');
+              if (parts.length < 2) return raw;
+              return (
+                <>
+                  {parts[0]}
+                  <a href={wikiUrl('binarySearch', locale)} target="_blank" rel="noopener noreferrer" className="underline decoration-purple-400 hover:text-purple-950">
+                    {t('faq.h.game.binarySearch' as any)}
+                  </a>
+                  {parts[1]}
+                </>
+              );
+            })()}
           </p>
 
           {/* Scenario: guessing a letter */}

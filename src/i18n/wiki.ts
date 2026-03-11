@@ -112,6 +112,11 @@ const WIKI_ARTICLES: Record<string, Partial<Record<Locale, string>>> = {
     en: 'Project_Gutenberg',
     nl: 'Project_Gutenberg',
   },
+  binarySearch: {
+    fr: 'Recherche_dichotomique',
+    en: 'Binary_search',
+    nl: 'Binair_zoeken',
+  },
 };
 
 const WIKI_BASES: Record<Locale, string> = {

@@ -286,7 +286,8 @@ const fr = {
   'faq.h.ex5.detail': 'Le grec utilise 24 lettres avec une répartition plus uniforme que le latin. L\'alphabet inclut des caractères vocaliques distincts (α, ε, η, ι, ο, υ, ω), ce qui répartit mieux les probabilités. Typique : H ≈ 4,0–4,2 bits. Essayez vous-même : comparez un texte grec et latin !',
   // Yes/No game
   'faq.h.game.title': 'Le jeu des questions oui/non : l\'entropie en action',
-  'faq.h.game.intro': 'Imaginez un jeu : une lettre est cachée dans un texte français, et vous devez la deviner avec des questions oui/non. La stratégie optimale consiste à couper les probabilités en deux à chaque question — comme une recherche dichotomique.',
+  'faq.h.game.intro': 'Imaginez un jeu : une lettre est cachée dans un texte français, et vous devez la deviner avec des questions oui/non. La stratégie optimale consiste à couper les probabilités en deux à chaque question — comme une {binarySearch}.',
+  'faq.h.game.binarySearch': 'recherche dichotomique',
   'faq.h.game.yes': 'Oui',
   'faq.h.game.no': 'Non',
   'faq.h.game.round1.title': 'Partie 1 — La lettre cachée est « e » (fréquente)',
@@ -302,7 +303,7 @@ const fr = {
   'faq.h.game.round2.q5': '« Est-ce dans {z, y} ? »',
   'faq.h.game.round2.q6': '« Est-ce un z ? »',
   'faq.h.game.round2.result': '6 questions pour le « z » — une lettre rare coûte plus cher.',
-  'faq.h.game.conclusion': 'Le « e » coûte ~3 questions mais arrive 25 % du temps. Le « z » coûte ~6 questions mais arrive 0,1 % du temps. La moyenne pondérée de toutes ces parties, c\'est exactement l\'entropie : H ≈ 4,0 bits/lettre en français. C\'est pour cela que les fractions de bit ont du sens : ce n\'est pas qu\'une seule lettre coûte 4 questions — c\'est la moyenne sur des milliers de lettres.',
+  'faq.h.game.conclusion': 'Le « e » coûte ~3 questions mais arrive ~15 % du temps. Le « z » coûte ~6 questions mais arrive 0,1 % du temps. La moyenne pondérée de toutes ces parties, c\'est exactement l\'entropie : H ≈ 4,0 bits/lettre en français. C\'est pour cela que les fractions de bit ont du sens : ce n\'est pas qu\'une seule lettre coûte 4 questions — c\'est la moyenne sur des milliers de lettres.',
 
   'faq.h.why.title': 'Pourquoi est-ce important ?',
   'faq.h.why.text': 'L\'entropie est le nombre minimal théorique de bits nécessaires pour encoder un symbole d\'une langue. C\'est pourquoi les travaux de Shannon ont lancé tout le domaine de la compression de données. Chaque fichier ZIP, MP3 et JPEG doit son existence à cette formule. Et pour la linguistique, elle révèle que chaque langue possède une « empreinte » statistique unique — une signature mesurable façonnée par sa grammaire, son vocabulaire et sa phonologie.',
@@ -662,7 +663,8 @@ const en: TranslationKeys = {
   'faq.h.ex5.detail': 'Greek uses 24 letters with a more even spread than Latin. The alphabet includes distinct vowel characters (α, ε, η, ι, ο, υ, ω), which distributes probability more evenly. Typical: H ≈ 4.0–4.2 bits. Try it yourself: compare Greek and Latin texts to see the difference!',
   // Yes/No game
   'faq.h.game.title': 'The yes/no questions game: entropy in action',
-  'faq.h.game.intro': 'Imagine a game: a letter is hidden in a French text, and you must guess it using only yes/no questions. The optimal strategy is to split the remaining probabilities in half at each question — like a binary search.',
+  'faq.h.game.intro': 'Imagine a game: a letter is hidden in a French text, and you must guess it using only yes/no questions. The optimal strategy is to split the remaining probabilities in half at each question — like a {binarySearch}.',
+  'faq.h.game.binarySearch': 'binary search',
   'faq.h.game.yes': 'Yes',
   'faq.h.game.no': 'No',
   'faq.h.game.round1.title': 'Round 1 — The hidden letter is "e" (common)',
@@ -678,7 +680,7 @@ const en: TranslationKeys = {
   'faq.h.game.round2.q5': '"Is it in {z, y}?"',
   'faq.h.game.round2.q6': '"Is it a z?"',
   'faq.h.game.round2.result': '6 questions for "z" — rare letters cost more.',
-  'faq.h.game.conclusion': '"e" costs ~3 questions but appears 25% of the time. "z" costs ~6 questions but appears 0.1% of the time. The weighted average of all these rounds is exactly the entropy: H ≈ 4.0 bits/letter in French. This is why fractional bits make sense: no single letter costs exactly 4 questions — it\'s the average over thousands of letters.',
+  'faq.h.game.conclusion': '"e" costs ~3 questions but appears ~15% of the time. "z" costs ~6 questions but appears 0.1% of the time. The weighted average of all these rounds is exactly the entropy: H ≈ 4.0 bits/letter in French. This is why fractional bits make sense: no single letter costs exactly 4 questions — it\'s the average over thousands of letters.',
 
   'faq.h.why.title': 'Why does this matter?',
   'faq.h.why.text': 'Entropy is the theoretical minimum number of bits needed to encode one symbol of a language. This is why Shannon\'s work launched the entire field of data compression. Every ZIP file, MP3, and JPEG owes its existence to this formula. And for linguistics, it reveals that every language has a unique statistical "fingerprint" — a measurable signature shaped by its grammar, vocabulary, and phonology.',
@@ -1032,7 +1034,8 @@ const nl: TranslationKeys = {
   'faq.h.ex5.detail': 'Grieks gebruikt 24 letters met een gelijkmatigere verdeling dan Latijn. Het alfabet bevat aparte klinkerkarakters (α, ε, η, ι, ο, υ, ω), wat de kans gelijkmatiger verdeelt. Typisch: H ≈ 4,0–4,2 bits. Probeer het zelf: vergelijk Griekse en Latijnse teksten!',
   // Yes/No game
   'faq.h.game.title': 'Het ja/nee-vragenspel: entropie in actie',
-  'faq.h.game.intro': 'Stel je een spel voor: een letter is verborgen in een Franse tekst, en je moet hem raden met ja/nee-vragen. De optimale strategie is om de resterende kansen bij elke vraag in tweeën te splitsen — als een binaire zoekopdracht.',
+  'faq.h.game.intro': 'Stel je een spel voor: een letter is verborgen in een Franse tekst, en je moet hem raden met ja/nee-vragen. De optimale strategie is om de resterende kansen bij elke vraag in tweeën te splitsen — als een {binarySearch}.',
+  'faq.h.game.binarySearch': 'binaire zoekopdracht',
   'faq.h.game.yes': 'Ja',
   'faq.h.game.no': 'Nee',
   'faq.h.game.round1.title': 'Ronde 1 — De verborgen letter is "e" (veelvoorkomend)',
@@ -1048,7 +1051,7 @@ const nl: TranslationKeys = {
   'faq.h.game.round2.q5': '"Zit het in {z, y}?"',
   'faq.h.game.round2.q6': '"Is het een z?"',
   'faq.h.game.round2.result': '6 vragen voor de "z" — zeldzame letters kosten meer.',
-  'faq.h.game.conclusion': 'De "e" kost ~3 vragen maar verschijnt 25% van de tijd. De "z" kost ~6 vragen maar verschijnt 0,1% van de tijd. Het gewogen gemiddelde van al deze rondes is precies de entropie: H ≈ 4,0 bits/letter in het Frans. Daarom hebben fractionele bits zin: geen enkele letter kost precies 4 vragen — het is het gemiddelde over duizenden letters.',
+  'faq.h.game.conclusion': 'De "e" kost ~3 vragen maar verschijnt ~15% van de tijd. De "z" kost ~6 vragen maar verschijnt 0,1% van de tijd. Het gewogen gemiddelde van al deze rondes is precies de entropie: H ≈ 4,0 bits/letter in het Frans. Daarom hebben fractionele bits zin: geen enkele letter kost precies 4 vragen — het is het gemiddelde over duizenden letters.',
 
   'faq.h.why.title': 'Waarom is dit belangrijk?',
   'faq.h.why.text': 'Entropie is het theoretische minimum aantal bits dat nodig is om één symbool van een taal te coderen. Daarom lanceerden Shannons werkzaamheden het hele vakgebied van datacompressie. Elk ZIP-bestand, MP3 en JPEG dankt zijn bestaan aan deze formule. En voor de taalkunde onthult het dat elke taal een unieke statistische "vingerafdruk" heeft — een meetbare signatuur gevormd door grammatica, woordenschat en fonologie.',
