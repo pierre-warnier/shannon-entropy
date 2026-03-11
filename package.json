@@ -6,7 +6,6 @@
   "scripts": {
     "stats": "tsx scripts/compute-stats.ts",
     "dev": "vite",
-    "prebuild": "tsx scripts/compute-stats.ts",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
