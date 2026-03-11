@@ -46,7 +46,10 @@ export default function Library() {
   const { result, analyzing, error: analysisError, analyze } = useAnalysis();
   const { loadText, loading: corpusLoading, error: corpusError } = useCorpus();
   const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
   const [language, setLanguage] = useState('');
+  const [source, setSource] = useState('');
+  const [period, setPeriod] = useState('');
   const [customUpload, setCustomUpload] = useState(false);
   const analysisSectionRef = useRef<HTMLDivElement>(null);
 
@@ -64,7 +67,10 @@ export default function Library() {
     const corpus = catalog.find((c) => c.id === selectedId);
     if (!corpus) return;
     setTitle(corpus.title);
+    setAuthor(corpus.author);
     setLanguage(corpus.language);
+    setSource(corpus.source);
+    setPeriod(corpus.period);
     setCustomUpload(false);
     loadText(corpus).then((text) => analyze(text, corpus.languageCode));
   }, [selectedId, loadText, analyze]);
@@ -96,7 +102,10 @@ export default function Library() {
   const handleFileUpload = useCallback(
     (text: string, filename: string) => {
       setTitle(filename.replace(/\.txt$/i, ''));
+      setAuthor('');
       setLanguage('');
+      setSource('');
+      setPeriod('');
       setCustomUpload(true);
       setSearchParams((prev) => {
         prev.delete('id');
@@ -113,7 +122,10 @@ export default function Library() {
       return prev;
     });
     setTitle('');
+    setAuthor('');
     setLanguage('');
+    setSource('');
+    setPeriod('');
     setCustomUpload(false);
   }, [setSearchParams]);
 
@@ -309,7 +321,16 @@ export default function Library() {
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3 sm:mb-6 sm:gap-4">
                 <div className="min-w-0">
                   <h3 className="truncate text-base font-semibold text-slate-900 sm:text-lg">{title}</h3>
-                  <p className="text-xs text-slate-500">{t('analyze.complete')}</p>
+                  {author && (
+                    <p className="text-xs text-slate-600 sm:text-sm">{author}</p>
+                  )}
+                  <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-slate-400 sm:text-xs">
+                    {language && <span>{t(`lang.${language}` as Parameters<typeof t>[0])}</span>}
+                    {language && period && <span className="text-slate-300">|</span>}
+                    {period && <span>{t(`period.${period}` as Parameters<typeof t>[0])}</span>}
+                    {(language || period) && source && <span className="text-slate-300">|</span>}
+                    {source && <span className="italic">{source}</span>}
+                  </div>
                 </div>
                 <div className="flex shrink-0 items-center gap-2 sm:gap-3">
                   <ExportButton result={result} title={title} />
