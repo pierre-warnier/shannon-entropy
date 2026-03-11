@@ -34,7 +34,7 @@ const fr = {
   'about.source.title': 'Code source',
   'about.source.text': 'Le code source complet est disponible sur GitHub :',
   'about.credits.title': 'Crédits',
-  'about.credits.corpus': 'Corpus : Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon), Mechon Mamre, Al-Eman',
+  'about.credits.corpus': 'Corpus : Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon), The Latin Library, Mechon Mamre, Project Ben Yehuda, Al-Eman, Tanzil.net, Hindawi, Georgetown University Library',
   'about.credits.portraits': 'Portraits : Wikimedia Commons',
   'about.credits.ai': 'Développé avec l\'assistance de Claude (Anthropic)',
 
@@ -431,7 +431,7 @@ const en: TranslationKeys = {
   'about.source.title': 'Source code',
   'about.source.text': 'The complete source code is available on GitHub:',
   'about.credits.title': 'Credits',
-  'about.credits.corpus': 'Corpus: Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon), Mechon Mamre, Al-Eman',
+  'about.credits.corpus': 'Corpus: Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon), The Latin Library, Mechon Mamre, Project Ben Yehuda, Al-Eman, Tanzil.net, Hindawi, Georgetown University Library',
   'about.credits.portraits': 'Portraits: Wikimedia Commons',
   'about.credits.ai': 'Developed with assistance from Claude (Anthropic)',
 
@@ -802,7 +802,7 @@ const nl: TranslationKeys = {
   'about.source.title': 'Broncode',
   'about.source.text': 'De volledige broncode is beschikbaar op GitHub:',
   'about.credits.title': 'Verantwoording',
-  'about.credits.corpus': 'Tekstcorpus: Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon), Mechon Mamre, Al-Eman',
+  'about.credits.corpus': 'Tekstcorpus: Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon), The Latin Library, Mechon Mamre, Project Ben Yehuda, Al-Eman, Tanzil.net, Hindawi, Georgetown University Library',
   'about.credits.portraits': 'Portretten: Wikimedia Commons',
   'about.credits.ai': 'Ontwikkeld met hulp van Claude (Anthropic)',
 
