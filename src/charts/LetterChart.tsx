@@ -9,9 +9,7 @@ interface LetterChartProps {
 
 const plotConfig: Partial<Config> = {
   responsive: true,
-  displayModeBar: true,
-  modeBarButtonsToRemove: ['lasso2d', 'select2d'],
-  toImageButtonOptions: { format: 'png', scale: 2 },
+  displayModeBar: false,
 };
 
 export function LetterChart({ frequencies, title }: LetterChartProps) {

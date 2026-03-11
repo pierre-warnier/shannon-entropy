@@ -12,9 +12,7 @@ interface CompareLengthChartProps {
 
 const plotConfig: Partial<Config> = {
   responsive: true,
-  displayModeBar: true,
-  modeBarButtonsToRemove: ['lasso2d', 'select2d'],
-  toImageButtonOptions: { format: 'png', scale: 2 },
+  displayModeBar: false,
 };
 
 const COLOR_A = '#3b82f6'; // blue
