@@ -10,6 +10,7 @@ const stopwordSets = new Map<string, Set<string>>();
 /** Language code mapping from our codes to ISO 639-1 codes used by stopwords-iso */
 const CODE_MAP: Record<string, string> = {
   fr: 'fr',
+  fro: 'fr', // Old French → modern French stopwords as approximation
   la: 'la',
   grc: 'el', // Ancient Greek → modern Greek stopwords as approximation
   nl: 'nl',

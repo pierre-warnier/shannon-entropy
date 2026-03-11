@@ -4,6 +4,16 @@
  * Computes pointwise mutual information (PMI) for adjacent word pairs.
  */
 
+/** Strict Roman numeral pattern (matches I–MMMCMXCIX) */
+const ROMAN_RE = /^(?:m{0,3})(?:cm|cd|d?c{0,3})(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})$/i;
+
+/** Returns true for Arabic digits or Roman numerals (2+ chars to keep "i" etc.) */
+function isNumericToken(word: string): boolean {
+  if (/\d/.test(word)) return true;
+  if (word.length < 2) return false;
+  return ROMAN_RE.test(word);
+}
+
 /**
  * Compute mutual information for adjacent word pairs and return the
  * top pairs ranked by MI score.
@@ -53,6 +63,9 @@ export function mutualInformation(
     if (count < minCount) continue;
 
     const [w1, w2] = key.split('\t');
+
+    // Skip pairs containing numbers (Arabic or Roman) — chapter numbers etc.
+    if (isNumericToken(w1) || isNumericToken(w2)) continue;
     const pBigram = count / totalBigrams;
     const pW1 = unigramCounts.get(w1)! / totalUnigrams;
     const pW2 = unigramCounts.get(w2)! / totalUnigrams;
