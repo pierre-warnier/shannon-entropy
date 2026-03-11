@@ -103,11 +103,12 @@ export function StatsPanel({ result, language }: StatsPanelProps) {
       </div>
 
       {/* Secondary stats */}
-      <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 sm:gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3">
         {[
           { label: t('stats.totalChars'), value: result.totalCharacters.toLocaleString() },
           { label: t('stats.totalWords'), value: result.totalWords.toLocaleString() },
           { label: t('stats.uniqueWords'), value: result.uniqueWords.toLocaleString() },
+          { label: t('stats.vocRichness'), value: result.totalWords > 0 ? (result.uniqueWords / result.totalWords * 100).toFixed(1) + '%' : '—' },
           { label: t('stats.meanWordLength'), value: result.wordLengthStats.mean.toFixed(2) },
           { label: t('stats.medianLength'), value: result.wordLengthStats.median.toFixed(1) },
         ].map((stat) => (
