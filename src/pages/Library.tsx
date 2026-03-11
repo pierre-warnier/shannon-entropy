@@ -270,27 +270,25 @@ export default function Library() {
                 </div>
               )}
               <div className="min-w-0 flex-1">
-                <div className="mb-1 flex items-start justify-between gap-2 sm:mb-2">
-                  <h3 className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 sm:text-base">
-                    {corpus.title}
-                  </h3>
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <h3 className="truncate text-sm font-semibold text-slate-900 group-hover:text-blue-600 sm:text-base">
+                      {corpus.title}
+                    </h3>
+                  </div>
                   <span className="shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium text-slate-600 sm:text-xs">
                     {corpus.languageCode.toUpperCase()}
                   </span>
                 </div>
-                <p className="text-xs text-slate-600 sm:text-sm">{corpus.author}</p>
-                <div className="mt-1.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-slate-400 sm:mt-2 sm:gap-x-3 sm:text-xs">
-                  <span>{t(`lang.${corpus.language}` as Parameters<typeof t>[0])}</span>
-                  <span className="text-slate-300">|</span>
-                  <span>{t(`period.${corpus.period}` as Parameters<typeof t>[0])}</span>
-                  <span className="text-slate-300">|</span>
-                  <span className="italic">{corpus.source}</span>
+                <p className="mt-0.5 truncate text-xs text-slate-500 sm:text-sm">
+                  {corpus.author} <span className="text-slate-300">·</span> {t(`period.${corpus.period}` as Parameters<typeof t>[0])}
+                </p>
+                <div className="mt-0.5 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[10px] text-slate-400 sm:gap-x-3 sm:text-xs">
                   {wordCountMap.has(corpus.id) && (
-                    <>
-                      <span className="text-slate-300">|</span>
-                      <span>{formatWordCount(wordCountMap.get(corpus.id)!)} {t('library.words')}</span>
-                    </>
+                    <span>{formatWordCount(wordCountMap.get(corpus.id)!)} {t('library.words')}</span>
                   )}
+                  {wordCountMap.has(corpus.id) && <span className="text-slate-300">|</span>}
+                  <span className="italic">{corpus.source}</span>
                 </div>
               </div>
             </button>
