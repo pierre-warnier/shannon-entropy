@@ -108,11 +108,18 @@ export function TimelineChart({
       y: items.map((e) => e.letterEntropy),
       text: items.map(
         (e) =>
-          `<b>${e.title}</b><br>${e.author}<br>${e.language} · ${e.period}<br>` +
-          `Letter H: ${e.letterEntropy.toFixed(3)} bits<br>` +
-          `Word H: ${e.wordEntropy.toFixed(2)} bits`,
+          `<b style="font-size:14px">${e.title}</b><br>` +
+          `${e.author}<br>` +
+          `${e.language} · ${e.period}<br><br>` +
+          `${t('chart.bubble.letterH')}: <b>${e.letterEntropy.toFixed(3)}</b> bits<br>` +
+          `${t('chart.bubble.wordH')}: <b>${e.wordEntropy.toFixed(2)}</b> bits`,
       ),
       hovertemplate: '%{text}<extra></extra>',
+      hoverlabel: {
+        bgcolor: LANGUAGE_COLORS[lang] ?? '#64748b',
+        bordercolor: LANGUAGE_COLORS[lang] ?? '#64748b',
+        font: { family: 'Inter, system-ui, sans-serif', size: 13, color: 'white' },
+      },
       marker: {
         size: 12,
         color: LANGUAGE_COLORS[lang] ?? '#64748b',

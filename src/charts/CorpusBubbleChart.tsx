@@ -142,15 +142,22 @@ export function CorpusBubbleChart({
       y: items.map((e) => e.meanWordLength),
       text: items.map(
         (e) =>
-          `<b>${e.title}</b><br>${e.author}<br>${t(`lang.${e.language}`)} · ${e.period}<br>` +
-          `${t('chart.bubble.letterH')}: ${e.letterEntropy.toFixed(3)} bits<br>` +
-          `${t('chart.bubble.wordH')}: ${e.wordEntropy.toFixed(2)} bits<br>` +
-          `${t('chart.bubble.meanLen')}: ${e.meanWordLength.toFixed(2)}<br>` +
-          `${t('chart.bubble.vocRich')}: ${(e.vocabularyRichness * 100).toFixed(1)}%`,
+          `<b style="font-size:14px">${e.title}</b><br>` +
+          `${e.author}<br>` +
+          `${t(`lang.${e.language}`)} · ${e.period}<br><br>` +
+          `${t('chart.bubble.letterH')}: <b>${e.letterEntropy.toFixed(3)}</b> bits<br>` +
+          `${t('chart.bubble.wordH')}: <b>${e.wordEntropy.toFixed(2)}</b> bits<br>` +
+          `${t('chart.bubble.meanLen')}: <b>${e.meanWordLength.toFixed(2)}</b><br>` +
+          `${t('chart.bubble.vocRich')}: <b>${(e.vocabularyRichness * 100).toFixed(1)}%</b>`,
       ),
       hovertemplate: '%{text}<extra></extra>',
+      hoverlabel: {
+        bgcolor: LANGUAGE_COLORS[lang] ?? '#64748b',
+        bordercolor: LANGUAGE_COLORS[lang] ?? '#64748b',
+        font: { family: 'Inter, system-ui, sans-serif', size: 13, color: 'white' },
+      },
       marker: showHulls
-        ? { size: 6, color: LANGUAGE_COLORS[lang] ?? '#64748b', opacity: 0.9, line: { color: 'white', width: 1 } }
+        ? { size: 8, color: LANGUAGE_COLORS[lang] ?? '#64748b', opacity: 0.9, line: { color: 'white', width: 1 } }
         : { size: items.map((e) => scaleSize(e.vocabularyRichness)), color: LANGUAGE_COLORS[lang] ?? '#64748b', opacity: 0.8, line: { color: 'white', width: 1.5 } },
     });
   }
