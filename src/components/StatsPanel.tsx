@@ -1,40 +1,96 @@
+import { useMemo } from 'react';
 import { useI18n } from '../i18n/I18nContext';
 import type { AnalysisResult } from '../types';
+import precomputedStats from '../data/precomputed_stats.json';
+
+interface StatEntry {
+  language: string;
+  letterEntropy: number;
+  wordEntropy: number;
+}
+
+/** Compute per-language and corpus-wide averages (once at module load). */
+function computeAverages() {
+  const stats = precomputedStats as StatEntry[];
+  const byLang = new Map<string, { sumL: number; sumW: number; n: number }>();
+  let totalL = 0, totalW = 0, total = 0;
+
+  for (const s of stats) {
+    totalL += s.letterEntropy;
+    totalW += s.wordEntropy;
+    total++;
+    const entry = byLang.get(s.language) ?? { sumL: 0, sumW: 0, n: 0 };
+    entry.sumL += s.letterEntropy;
+    entry.sumW += s.wordEntropy;
+    entry.n++;
+    byLang.set(s.language, entry);
+  }
+
+  const langAvg = new Map<string, { letter: number; word: number }>();
+  for (const [lang, { sumL, sumW, n }] of byLang) {
+    langAvg.set(lang, { letter: sumL / n, word: sumW / n });
+  }
+
+  return {
+    langAvg,
+    corpusAvg: { letter: totalL / total, word: totalW / total },
+  };
+}
+
+const { langAvg, corpusAvg } = computeAverages();
+
+/**
+ * Entropy comparison as effective-possibilities ratio.
+ * 0.2 bits difference = 2^0.2 ≈ +15% complexity.
+ */
+function entropyPct(value: number, reference: number): string {
+  const pct = (Math.pow(2, value - reference) - 1) * 100;
+  return (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+}
+
+function entropyPctRaw(value: number, reference: number): number {
+  return (Math.pow(2, value - reference) - 1) * 100;
+}
 
 interface StatsPanelProps {
   result: AnalysisResult;
+  language?: string; // display name e.g. "French", "Latin"
 }
 
-export function StatsPanel({ result }: StatsPanelProps) {
+export function StatsPanel({ result, language }: StatsPanelProps) {
   const { t } = useI18n();
+
+  const context = useMemo(() => {
+    const lang = language ? langAvg.get(language) : undefined;
+    return { lang, corpus: corpusAvg };
+  }, [language]);
+
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Entropy hero — front and center */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border-2 border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100 p-4 shadow-sm sm:p-6">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-blue-600 sm:text-xs">
-            {t('stats.letterEntropy')}
-          </p>
-          <p className="mt-1 text-3xl font-extrabold tracking-tight text-blue-900 sm:mt-2 sm:text-5xl">
-            {result.letterEntropy.toFixed(4)}
-          </p>
-          <p className="mt-0.5 text-xs text-blue-600 sm:mt-1 sm:text-sm">{t('stats.perChar')}</p>
-          <p className="mt-2 text-[11px] leading-relaxed text-blue-700/70 sm:mt-3 sm:text-xs">
-            {t('stats.letterDesc')}
-          </p>
-        </div>
-        <div className="rounded-xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-purple-100 p-4 shadow-sm sm:p-6">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-purple-600 sm:text-xs">
-            {t('stats.wordEntropy')}
-          </p>
-          <p className="mt-1 text-3xl font-extrabold tracking-tight text-purple-900 sm:mt-2 sm:text-5xl">
-            {result.wordEntropy.toFixed(4)}
-          </p>
-          <p className="mt-0.5 text-xs text-purple-600 sm:mt-1 sm:text-sm">{t('stats.perWord')}</p>
-          <p className="mt-2 text-[11px] leading-relaxed text-purple-700/70 sm:mt-3 sm:text-xs">
-            {t('stats.wordDesc')}
-          </p>
-        </div>
+        <EntropyCard
+          label={t('stats.letterEntropy')}
+          value={result.letterEntropy}
+          unit={t('stats.perChar')}
+          desc={t('stats.letterDesc')}
+          langAvg={context.lang?.letter}
+          corpusAvg={context.corpus.letter}
+          language={language}
+          color="blue"
+          t={t}
+        />
+        <EntropyCard
+          label={t('stats.wordEntropy')}
+          value={result.wordEntropy}
+          unit={t('stats.perWord')}
+          desc={t('stats.wordDesc')}
+          langAvg={context.lang?.word}
+          corpusAvg={context.corpus.word}
+          language={language}
+          color="purple"
+          t={t}
+        />
       </div>
 
       {/* Secondary stats */}
@@ -60,5 +116,68 @@ export function StatsPanel({ result }: StatsPanelProps) {
         ))}
       </div>
     </div>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+
+interface EntropyCardProps {
+  label: string;
+  value: number;
+  unit: string;
+  desc: string;
+  langAvg?: number;
+  corpusAvg: number;
+  language?: string;
+  color: 'blue' | 'purple';
+  t: ReturnType<typeof useI18n>['t'];
+}
+
+function EntropyCard({ label, value, unit, desc, langAvg, corpusAvg, language, color, t }: EntropyCardProps) {
+  const c = color === 'blue'
+    ? { border: 'border-blue-200', bg: 'bg-gradient-to-br from-blue-50 to-blue-100', title: 'text-blue-600', num: 'text-blue-900', sub: 'text-blue-600', desc: 'text-blue-700/70' }
+    : { border: 'border-purple-200', bg: 'bg-gradient-to-br from-purple-50 to-purple-100', title: 'text-purple-600', num: 'text-purple-900', sub: 'text-purple-600', desc: 'text-purple-700/70' };
+
+  return (
+    <div className={`rounded-xl border-2 ${c.border} ${c.bg} p-4 shadow-sm sm:p-6`}>
+      <p className={`text-[10px] font-semibold uppercase tracking-widest ${c.title} sm:text-xs`}>
+        {label}
+      </p>
+      <p className={`mt-1 text-3xl font-extrabold tracking-tight ${c.num} sm:mt-2 sm:text-5xl`}>
+        {value.toFixed(4)}
+      </p>
+      <p className={`mt-0.5 text-xs ${c.sub} sm:mt-1 sm:text-sm`}>{unit}</p>
+
+      {/* Context badges */}
+      <div className="mt-2 flex flex-wrap gap-1.5 sm:mt-3 sm:gap-2">
+        {langAvg != null && (
+          <ContextBadge
+            pct={entropyPctRaw(value, langAvg)}
+            label={t('stats.vsLang').replace('{lang}', language ?? '')}
+          />
+        )}
+        <ContextBadge
+          pct={entropyPctRaw(value, corpusAvg)}
+          label={t('stats.vsCorpus')}
+        />
+      </div>
+
+      <p className={`mt-2 text-[11px] leading-relaxed ${c.desc} sm:mt-3 sm:text-xs`}>
+        {desc}
+      </p>
+    </div>
+  );
+}
+
+function ContextBadge({ pct, label }: { pct: number; label: string }) {
+  const isPositive = pct >= 0;
+  const bgColor = isPositive ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800';
+  const arrow = isPositive ? '↑' : '↓';
+  const formatted = (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+
+  return (
+    <span className={`inline-flex items-center gap-0.5 rounded-full px-2 py-0.5 text-[10px] font-semibold sm:text-xs ${bgColor}`}>
+      {arrow} {formatted} {label}
+    </span>
   );
 }

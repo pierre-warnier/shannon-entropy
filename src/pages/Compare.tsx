@@ -232,13 +232,29 @@ function ComparisonResults({ panelA, panelB }: ComparisonResultsProps) {
     return va > vb ? 'text-blue-600' : 'text-red-600';
   };
 
+  // Entropy is logarithmic: a delta of 0.2 bits = 2^0.2 ≈ 15% more possibilities.
+  // Raw deltas are misleading — show the ratio of effective possibilities instead.
+  const entropyPct = (ha: number, hb: number) => {
+    const ratio = Math.pow(2, ha - hb); // 2^Ha / 2^Hb
+    const pct = (ratio - 1) * 100;
+    return (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+  };
+
+  const linearPct = (va: number, vb: number) => {
+    if (vb === 0) return '—';
+    const pct = ((va - vb) / vb) * 100;
+    return (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+  };
+
+  type MetricKind = 'entropy' | 'linear';
+
   const statsRows = [
-    { label: t('stats.letterEntropy'), valA: a.letterEntropy.toFixed(4) + ' ' + bits, valB: b.letterEntropy.toFixed(4) + ' ' + bits, numA: a.letterEntropy, numB: b.letterEntropy, fmt: (d: number) => (d >= 0 ? '+' : '') + d.toFixed(4) + ' ' + bits },
-    { label: t('stats.wordEntropy'), valA: a.wordEntropy.toFixed(4) + ' ' + bits, valB: b.wordEntropy.toFixed(4) + ' ' + bits, numA: a.wordEntropy, numB: b.wordEntropy, fmt: (d: number) => (d >= 0 ? '+' : '') + d.toFixed(2) + ' ' + bits },
-    { label: t('stats.totalChars'), valA: a.totalCharacters.toLocaleString(), valB: b.totalCharacters.toLocaleString(), numA: a.totalCharacters, numB: b.totalCharacters, fmt: (d: number) => (d >= 0 ? '+' : '') + d.toLocaleString() },
-    { label: t('stats.totalWords'), valA: a.totalWords.toLocaleString(), valB: b.totalWords.toLocaleString(), numA: a.totalWords, numB: b.totalWords, fmt: (d: number) => (d >= 0 ? '+' : '') + d.toLocaleString() },
-    { label: t('stats.uniqueWords'), valA: a.uniqueWords.toLocaleString(), valB: b.uniqueWords.toLocaleString(), numA: a.uniqueWords, numB: b.uniqueWords, fmt: (d: number) => (d >= 0 ? '+' : '') + d.toLocaleString() },
-    { label: t('stats.meanWordLength'), valA: a.wordLengthStats.mean.toFixed(2), valB: b.wordLengthStats.mean.toFixed(2), numA: a.wordLengthStats.mean, numB: b.wordLengthStats.mean, fmt: (d: number) => (d >= 0 ? '+' : '') + d.toFixed(2) },
+    { label: t('stats.letterEntropy'), valA: a.letterEntropy.toFixed(4) + ' ' + bits, valB: b.letterEntropy.toFixed(4) + ' ' + bits, numA: a.letterEntropy, numB: b.letterEntropy, kind: 'entropy' as MetricKind },
+    { label: t('stats.wordEntropy'), valA: a.wordEntropy.toFixed(4) + ' ' + bits, valB: b.wordEntropy.toFixed(4) + ' ' + bits, numA: a.wordEntropy, numB: b.wordEntropy, kind: 'entropy' as MetricKind },
+    { label: t('stats.totalChars'), valA: a.totalCharacters.toLocaleString(), valB: b.totalCharacters.toLocaleString(), numA: a.totalCharacters, numB: b.totalCharacters, kind: 'linear' as MetricKind },
+    { label: t('stats.totalWords'), valA: a.totalWords.toLocaleString(), valB: b.totalWords.toLocaleString(), numA: a.totalWords, numB: b.totalWords, kind: 'linear' as MetricKind },
+    { label: t('stats.uniqueWords'), valA: a.uniqueWords.toLocaleString(), valB: b.uniqueWords.toLocaleString(), numA: a.uniqueWords, numB: b.uniqueWords, kind: 'linear' as MetricKind },
+    { label: t('stats.meanWordLength'), valA: a.wordLengthStats.mean.toFixed(2), valB: b.wordLengthStats.mean.toFixed(2), numA: a.wordLengthStats.mean, numB: b.wordLengthStats.mean, kind: 'linear' as MetricKind },
   ];
 
   const portraitA = authorImages[panelA.author];
@@ -294,7 +310,7 @@ function ComparisonResults({ panelA, panelB }: ComparisonResultsProps) {
                 {panelB.title}
               </th>
               <th className="px-3 py-2.5 text-right text-xs font-medium text-slate-500 sm:px-4 sm:py-3 sm:text-sm">
-                Δ (A − B)
+                {t('compare.ratio')}
               </th>
             </tr>
           </thead>
@@ -314,12 +330,17 @@ function ComparisonResults({ panelA, panelB }: ComparisonResultsProps) {
                   {row.valB}
                 </td>
                 <td className={`whitespace-nowrap px-3 py-2 text-right text-xs font-medium tabular-nums sm:px-4 sm:py-2.5 sm:text-sm ${diffColor(row.numA, row.numB)}`}>
-                  {row.fmt(row.numA - row.numB)}
+                  {row.kind === 'entropy'
+                    ? entropyPct(row.numA, row.numB)
+                    : linearPct(row.numA, row.numB)}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+        <p className="px-3 py-2 text-[11px] leading-relaxed text-slate-400 sm:px-4 sm:text-xs">
+          {t('compare.entropyNote')}
+        </p>
       </div>
 
       {/* Charts — overlaid for easy comparison */}

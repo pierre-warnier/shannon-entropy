@@ -23,6 +23,7 @@ export default function Analyze() {
   const { result, analyzing, error: analysisError, analyze } = useAnalysis();
   const { loadText, loading: corpusLoading, error: corpusError } = useCorpus();
   const [title, setTitle] = useState<string>('');
+  const [language, setLanguage] = useState<string>('');
   const [hasStarted, setHasStarted] = useState(false);
   const [showStopwords, setShowStopwords] = useState(false);
 
@@ -34,6 +35,7 @@ export default function Analyze() {
 
     loadText(corpus).then((text) => {
       setTitle(corpus.title);
+      setLanguage(corpus.language);
       setHasStarted(true);
       analyze(text, corpus.languageCode);
     });
@@ -118,7 +120,7 @@ export default function Analyze() {
           </div>
 
           <div className="mb-6 sm:mb-8">
-            <StatsPanel result={result} />
+            <StatsPanel result={result} language={language || undefined} />
           </div>
 
           <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
