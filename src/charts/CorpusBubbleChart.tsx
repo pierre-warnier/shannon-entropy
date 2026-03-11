@@ -157,6 +157,14 @@ export function CorpusBubbleChart({
 
   const xLabel = mode === 'letter' ? t('chart.bubbleX') : t('chart.bubbleX.word');
 
+  // Fix axis ranges so they don't rescale when isolating a language
+  const xValues = entries.map((e) => (mode === 'letter' ? e.letterEntropy : e.wordEntropy));
+  const yValues = entries.map((e) => e.meanWordLength);
+  const xPad = (Math.max(...xValues) - Math.min(...xValues)) * 0.08;
+  const yPad = (Math.max(...yValues) - Math.min(...yValues)) * 0.08;
+  const xRange: [number, number] = [Math.min(...xValues) - xPad, Math.max(...xValues) + xPad];
+  const yRange: [number, number] = [Math.min(...yValues) - yPad, Math.max(...yValues) + yPad];
+
   const layout: Partial<Layout> = {
     title: { text: resolvedTitle, font: { family: 'Inter, system-ui, sans-serif', size: 16 } },
     font: { family: 'Inter, system-ui, sans-serif', size: 12 },
@@ -167,12 +175,14 @@ export function CorpusBubbleChart({
       showgrid: true,
       gridcolor: '#f1f5f9',
       zeroline: false,
+      range: xRange,
     },
     yaxis: {
       title: { text: t('chart.bubbleY') },
       showgrid: true,
       gridcolor: '#f1f5f9',
       zeroline: false,
+      range: yRange,
     },
     legend: {
       orientation: 'h',
