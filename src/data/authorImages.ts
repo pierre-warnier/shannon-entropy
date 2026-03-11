@@ -88,6 +88,14 @@ const authorImages: Record<string, string> = {
   'William Shakespeare': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/William_Shakespeare_by_John_Taylor%2C_edited.jpg/330px-William_Shakespeare_by_John_Taylor%2C_edited.jpg',
   'Xenophon': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Bust_of_Xenophon.jpg/330px-Bust_of_Xenophon.jpg',
   'Émile Zola': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Nadar_%28atelier_de%29_-_Emile_Zola%2C_13-556535.jpg/330px-Nadar_%28atelier_de%29_-_Emile_Zola%2C_13-556535.jpg',
+  'Torah': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Yemenite_Hakham_with_Torah.jpg/330px-Yemenite_Hakham_with_Torah.jpg',
+  'Tanakh': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Yemenite_Hakham_with_Torah.jpg/330px-Yemenite_Hakham_with_Torah.jpg',
+  'Judah Halevi': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Yehuda_Ha-Levi.jpg/330px-Yehuda_Ha-Levi.jpg',
+  'Maimonides': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Maimonides-2.jpg/330px-Maimonides-2.jpg',
+  'Mendele Mocher Sforim': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Mendele_Moicher_Sforim.jpg/330px-Mendele_Moicher_Sforim.jpg',
+  'Sholem Aleichem': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Sholem_Aleichem_in_1907.jpg/330px-Sholem_Aleichem_in_1907.jpg',
+  'H.N. Bialik': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Bialik.jpg/330px-Bialik.jpg',
+  'S.Y. Agnon': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Agnon.jpg/330px-Agnon.jpg',
 };
 
 export default authorImages;

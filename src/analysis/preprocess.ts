@@ -42,12 +42,16 @@ export function normalizeText(text: string): string {
   let result = text.toLowerCase();
 
   // Normalize Unicode: NFD (canonical decomposition) then strip
-  // combining diacritical marks so that accented letters are folded
-  // to their ASCII base form (e.g. à→a, é→e, ç→c, ñ→n, ü→u).
-  // This is essential for letter-frequency analysis where accented
+  // ALL combining marks (\p{M}) so that accented/vocalized letters
+  // are folded to their base form. This handles:
+  // - Latin accents (à→a, é→e, ç→c, ñ→n, ü→u)
+  // - Greek breathing/tonos marks
+  // - Hebrew nikud/vowel points (בְּ→ב)
+  // - Arabic tashkeel/diacritics (بِ→ب)
+  // Essential for letter-frequency analysis where accented/vocalized
   // variants should not be counted separately.
   result = result.normalize("NFD");
-  result = result.replace(/[\u0300-\u036f]/g, "");
+  result = result.replace(/\p{M}/gu, "");
 
   // Strip editorial artifacts before punctuation removal so that
   // bracketed content is removed as a unit.

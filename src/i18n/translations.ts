@@ -339,6 +339,8 @@ const fr = {
   'lang.Spanish': 'Espagnol',
   'lang.German': 'Allemand',
   'lang.Old French': 'Ancien français',
+  'lang.Hebrew': 'Hébreu',
+  'lang.Arabic': 'Arabe',
 
   // Periods
   'period.8th century BC': 'VIIIe siècle av. J.-C.',
@@ -678,6 +680,8 @@ const en: TranslationKeys = {
   'lang.Spanish': 'Spanish',
   'lang.German': 'German',
   'lang.Old French': 'Old French',
+  'lang.Hebrew': 'Hebrew',
+  'lang.Arabic': 'Arabic',
 
   'period.8th century BC': '8th century BC',
   'period.5th century BC': '5th century BC',
@@ -1016,6 +1020,8 @@ const nl: TranslationKeys = {
   'lang.Spanish': 'Spaans',
   'lang.German': 'Duits',
   'lang.Old French': 'Oudfrans',
+  'lang.Hebrew': 'Hebreeuws',
+  'lang.Arabic': 'Arabisch',
 
   'period.8th century BC': '8e eeuw v.Chr.',
   'period.5th century BC': '5e eeuw v.Chr.',

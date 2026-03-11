@@ -61,5 +61,12 @@
     "intercept": 4.15,
     "xMin": 1050,
     "xMax": 1350
+  },
+  {
+    "language": "Hebrew",
+    "slope": -4.7e-7,
+    "intercept": 4.2563,
+    "xMin": -750,
+    "xMax": 1950
   }
 ]

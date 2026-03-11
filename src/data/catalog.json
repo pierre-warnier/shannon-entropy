@@ -1136,5 +1136,135 @@
     "source": "Project Gutenberg",
     "gutenbergId": 47786,
     "textPath": "/corpora/it/aleramo_una_donna.txt"
+  },
+  {
+    "id": "he-torah-genesis",
+    "title": "Bereshit (Genèse)",
+    "author": "Torah",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "8th century BC",
+    "source": "Mechon Mamre",
+    "textPath": "/corpora/he/genesis.txt"
+  },
+  {
+    "id": "he-torah-exodus",
+    "title": "Shemot (Exode)",
+    "author": "Torah",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "8th century BC",
+    "source": "Mechon Mamre",
+    "textPath": "/corpora/he/exodus.txt"
+  },
+  {
+    "id": "he-tanakh-psalms",
+    "title": "Tehilim (Psaumes)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "5th century BC",
+    "source": "Mechon Mamre",
+    "textPath": "/corpora/he/psalms.txt"
+  },
+  {
+    "id": "he-tanakh-isaiah",
+    "title": "Yeshayahu (Isaïe)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "8th century BC",
+    "source": "Mechon Mamre",
+    "textPath": "/corpora/he/isaiah.txt"
+  },
+  {
+    "id": "he-tanakh-ecclesiastes",
+    "title": "Qohelet (Ecclésiaste)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "4th century BC",
+    "source": "Mechon Mamre",
+    "textPath": "/corpora/he/ecclesiastes.txt"
+  },
+  {
+    "id": "he-tanakh-song-of-songs",
+    "title": "Shir HaShirim (Cantique)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "5th century BC",
+    "source": "Mechon Mamre",
+    "textPath": "/corpora/he/song_of_songs.txt"
+  },
+  {
+    "id": "he-halevi-kuzari",
+    "title": "Sefer HaKuzari",
+    "author": "Judah Halevi",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "12th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/he/halevi_kuzari.txt"
+  },
+  {
+    "id": "he-maimonides-moreh",
+    "title": "Moreh Nevukhim (Guide des égarés)",
+    "author": "Maimonides",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "12th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/he/maimonides_moreh_nevukhim.txt"
+  },
+  {
+    "id": "he-maimonides-mishneh",
+    "title": "Mishneh Torah — Sefer HaMadda",
+    "author": "Maimonides",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "12th century",
+    "source": "Wikisource",
+    "textPath": "/corpora/he/maimonides_mishneh_torah.txt"
+  },
+  {
+    "id": "he-mendele-beemek",
+    "title": "Be'emek HaBakha",
+    "author": "Mendele Mocher Sforim",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "19th century",
+    "source": "Project Ben Yehuda",
+    "textPath": "/corpora/he/mendele_beemek_habakha.txt"
+  },
+  {
+    "id": "he-sholem-aleichem-stories",
+    "title": "Collected Stories",
+    "author": "Sholem Aleichem",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "19th century",
+    "source": "Project Ben Yehuda",
+    "textPath": "/corpora/he/sholem_aleichem_collected.txt"
+  },
+  {
+    "id": "he-bialik-collected",
+    "title": "Megillat HaEsh",
+    "author": "H.N. Bialik",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "20th century",
+    "source": "Project Ben Yehuda",
+    "textPath": "/corpora/he/bialik_collected.txt"
+  },
+  {
+    "id": "he-agnon-hamikhtav",
+    "title": "HaMikhtav",
+    "author": "S.Y. Agnon",
+    "language": "Hebrew",
+    "languageCode": "he",
+    "period": "20th century",
+    "source": "Project Ben Yehuda",
+    "textPath": "/corpora/he/agnon_hamikhtav.txt"
   }
 ]

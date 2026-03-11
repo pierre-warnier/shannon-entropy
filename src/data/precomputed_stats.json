@@ -1186,5 +1186,148 @@
     "wordEntropy": 10.17,
     "meanWordLength": 4.88,
     "vocabularyRichness": 0.1664
+  },
+  {
+    "id": "he-torah-genesis",
+    "title": "Bereshit (Genèse)",
+    "author": "Torah",
+    "language": "Hebrew",
+    "period": "8th century BC",
+    "letterEntropy": 4.217,
+    "wordEntropy": 10.35,
+    "meanWordLength": 3.79,
+    "vocabularyRichness": 0.2429
+  },
+  {
+    "id": "he-torah-exodus",
+    "title": "Shemot (Exode)",
+    "author": "Torah",
+    "language": "Hebrew",
+    "period": "8th century BC",
+    "letterEntropy": 4.237,
+    "wordEntropy": 10.14,
+    "meanWordLength": 3.8,
+    "vocabularyRichness": 0.2492
+  },
+  {
+    "id": "he-tanakh-psalms",
+    "title": "Tehilim (Psaumes)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "period": "5th century BC",
+    "letterEntropy": 4.276,
+    "wordEntropy": 11.2,
+    "meanWordLength": 4.03,
+    "vocabularyRichness": 0.3574
+  },
+  {
+    "id": "he-tanakh-isaiah",
+    "title": "Yeshayahu (Isaïe)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "period": "8th century BC",
+    "letterEntropy": 4.278,
+    "wordEntropy": 11.34,
+    "meanWordLength": 3.95,
+    "vocabularyRichness": 0.4145
+  },
+  {
+    "id": "he-tanakh-ecclesiastes",
+    "title": "Qohelet (Ecclésiaste)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "period": "4th century BC",
+    "letterEntropy": 4.258,
+    "wordEntropy": 9.18,
+    "meanWordLength": 3.67,
+    "vocabularyRichness": 0.4235
+  },
+  {
+    "id": "he-tanakh-song-of-songs",
+    "title": "Shir HaShirim (Cantique)",
+    "author": "Tanakh",
+    "language": "Hebrew",
+    "period": "5th century BC",
+    "letterEntropy": 4.306,
+    "wordEntropy": 9.24,
+    "meanWordLength": 4.11,
+    "vocabularyRichness": 0.6396
+  },
+  {
+    "id": "he-halevi-kuzari",
+    "title": "Sefer HaKuzari",
+    "author": "Judah Halevi",
+    "language": "Hebrew",
+    "period": "12th century",
+    "letterEntropy": 4.229,
+    "wordEntropy": 11.74,
+    "meanWordLength": 4.23,
+    "vocabularyRichness": 0.2875
+  },
+  {
+    "id": "he-maimonides-moreh",
+    "title": "Moreh Nevukhim (Guide des égarés)",
+    "author": "Maimonides",
+    "language": "Hebrew",
+    "period": "12th century",
+    "letterEntropy": 4.222,
+    "wordEntropy": 11.1,
+    "meanWordLength": 4.14,
+    "vocabularyRichness": 0.2238
+  },
+  {
+    "id": "he-maimonides-mishneh",
+    "title": "Mishneh Torah — Sefer HaMadda",
+    "author": "Maimonides",
+    "language": "Hebrew",
+    "period": "12th century",
+    "letterEntropy": 4.23,
+    "wordEntropy": 11.03,
+    "meanWordLength": 4.08,
+    "vocabularyRichness": 0.2273
+  },
+  {
+    "id": "he-mendele-beemek",
+    "title": "Be'emek HaBakha",
+    "author": "Mendele Mocher Sforim",
+    "language": "Hebrew",
+    "period": "19th century",
+    "letterEntropy": 4.257,
+    "wordEntropy": 12.26,
+    "meanWordLength": 4.23,
+    "vocabularyRichness": 0.2499
+  },
+  {
+    "id": "he-sholem-aleichem-stories",
+    "title": "Collected Stories",
+    "author": "Sholem Aleichem",
+    "language": "Hebrew",
+    "period": "19th century",
+    "letterEntropy": 4.273,
+    "wordEntropy": 12.06,
+    "meanWordLength": 4.04,
+    "vocabularyRichness": 0.2387
+  },
+  {
+    "id": "he-bialik-collected",
+    "title": "Megillat HaEsh",
+    "author": "H.N. Bialik",
+    "language": "Hebrew",
+    "period": "20th century",
+    "letterEntropy": 4.284,
+    "wordEntropy": 11.31,
+    "meanWordLength": 4.21,
+    "vocabularyRichness": 0.5519
+  },
+  {
+    "id": "he-agnon-hamikhtav",
+    "title": "HaMikhtav",
+    "author": "S.Y. Agnon",
+    "language": "Hebrew",
+    "period": "20th century",
+    "letterEntropy": 4.261,
+    "wordEntropy": 10.75,
+    "meanWordLength": 4.27,
+    "vocabularyRichness": 0.4645
   }
 ]
