@@ -38,19 +38,19 @@ export function WordChart({ words }: WordChartProps) {
     if (!el) return;
 
     const width = el.clientWidth || 600;
-    const height = Math.max(320, Math.min(width * 0.6, 500));
+    const height = Math.max(350, Math.min(width * 0.65, 550));
     setDimensions({ width, height });
 
-    const topWords = words.slice(0, 80);
+    const topWords = words.slice(0, 60);
     if (topWords.length === 0) return;
 
     const maxCount = topWords[0][1];
     const minCount = topWords[topWords.length - 1][1];
     const range = maxCount - minCount || 1;
 
-    // Scale font sizes relative to container width
-    const maxFont = Math.max(16, width / 10);
-    const minFont = Math.max(10, width / 50);
+    // Aggressive font scaling to fill the frame
+    const maxFont = Math.max(24, width / 6);
+    const minFont = Math.max(11, width / 40);
 
     const cloudWords = topWords.map(([text, count]) => ({
       text,
@@ -61,8 +61,8 @@ export function WordChart({ words }: WordChartProps) {
     cloud<typeof cloudWords[number]>()
       .size([width, height])
       .words(cloudWords)
-      .padding(2)
-      .rotate(() => (Math.random() > 0.7 ? 90 * (Math.random() > 0.5 ? 1 : -1) : 0))
+      .padding(1)
+      .rotate(() => (Math.random() > 0.8 ? 90 : 0))
       .fontSize((d) => d.size)
       .spiral('archimedean')
       .on('end', (output) => {

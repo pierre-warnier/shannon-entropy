@@ -65,6 +65,8 @@ const LANGUAGE_COLORS: Record<string, string> = {
   Italian: '#dc2626',
   Spanish: '#ca8a04',
   German: '#475569',
+  Hebrew: '#0d9488',
+  Arabic: '#7c3aed',
 };
 
 const plotConfig: Partial<Config> = {

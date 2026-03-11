@@ -18,6 +18,8 @@ const CODE_MAP: Record<string, string> = {
   it: 'it',
   es: 'es',
   de: 'de',
+  he: 'he',
+  ar: 'ar',
 };
 
 function getStopwordSet(languageCode: string): Set<string> {

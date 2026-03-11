@@ -66,6 +66,9 @@ export function mutualInformation(
 
     // Skip pairs containing numbers (Arabic or Roman) — chapter numbers etc.
     if (isNumericToken(w1) || isNumericToken(w2)) continue;
+
+    // Skip very short words (articles, prepositions) — not interesting for MI
+    if (w1.length < 3 || w2.length < 3) continue;
     const pBigram = count / totalBigrams;
     const pW1 = unigramCounts.get(w1)! / totalUnigrams;
     const pW2 = unigramCounts.get(w2)! / totalUnigrams;

@@ -11,6 +11,7 @@ const HAS_LETTER_RE = /\p{L}/u;
 /** ISO 639-1 locale codes for our supported languages. */
 const LOCALE_MAP: Record<string, string> = {
   fr: 'fr',
+  fro: 'fr',
   la: 'la',
   grc: 'el',
   nl: 'nl',
@@ -18,6 +19,8 @@ const LOCALE_MAP: Record<string, string> = {
   it: 'it',
   es: 'es',
   de: 'de',
+  he: 'he',
+  ar: 'ar',
 };
 
 /**
