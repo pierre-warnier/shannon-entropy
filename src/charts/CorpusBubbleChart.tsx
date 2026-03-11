@@ -112,6 +112,7 @@ export function CorpusBubbleChart({
         type: 'scatter' as const,
         mode: 'lines' as const,
         name: langLabel,
+        legendgroup: h.language,
         showlegend: false,
         x: smooth.map((p) => p[0]),
         y: smooth.map((p) => p[1]),
@@ -136,6 +137,7 @@ export function CorpusBubbleChart({
       type: 'scatter' as const,
       mode: 'markers' as const,
       name: t(`lang.${lang}`),
+      legendgroup: lang,
       x: items.map((e) => (mode === 'letter' ? e.letterEntropy : e.wordEntropy)),
       y: items.map((e) => e.meanWordLength),
       text: items.map(
