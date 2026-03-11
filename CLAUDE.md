@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Client-side web application for analyzing linguistic properties of texts using information theory concepts (entropy, Zipf's law, frequency distributions). Runs entirely in the browser with no backend. Full spec in `docs/specs.md`.
+Client-side web application for analyzing linguistic properties of texts using information theory concepts (entropy, frequency distributions, mutual information). Runs entirely in the browser with no backend. Full spec in `docs/specs.md`.
 
 ## Tech Stack
 
@@ -19,39 +19,50 @@ Client-side web application for analyzing linguistic properties of texts using i
 src/
   app/              # App shell, routing, layout
   components/       # Shared UI components
-  pages/            # Library, Analyze, Compare pages
+  pages/            # Home, Library, Analyze, Compare, Formulas (FAQ), About
+  i18n/             # Trilingual translations (FR/EN/NL)
 
   analysis/         # Core computation modules
     preprocess.ts   # Text normalization (lowercase, Unicode, punctuation removal)
     tokenizer.ts    # Character-level and word-level tokenization
     frequencies.ts  # Letter and word frequency distributions
     entropy.ts      # Shannon entropy (H = -sum p(x) log2 p(x)))
-    zipf.ts         # Zipf's law rank-frequency analysis
-    mutualInformation.ts  # Bigram mutual information (advanced/optional)
+    mutualInformation.ts  # Bigram mutual information
+    wordLength.ts   # Word length distribution analysis
+    stopwords.ts    # Stopword lists per language
 
   charts/           # Plotly chart components
-    letterChart.ts
-    zipfChart.ts
-    wordChart.ts
-    lengthChart.ts
-    entropyChart.ts
+    LetterChart.tsx
+    WordChart.tsx
+    LengthChart.tsx
+    EntropyChart.tsx
+    MutualInformationChart.tsx
+    CorpusBubbleChart.tsx
+    TimelineChart.tsx
+    CompareLetterChart.tsx
+    CompareLengthChart.tsx
 
   workers/          # Web Workers for heavy computation
     analysisWorker.ts
 
   data/
-    catalog.json    # Corpus metadata index
+    catalog.json    # Corpus metadata index (108 entries)
+    authorImages.ts # Author portrait URLs (Wikimedia Commons)
+    precomputed_stats.json   # Per-text summary statistics
+    precomputed_trends.json  # Per-language linear regression trend lines
+    precomputed_hulls.json   # Per-language convex hulls for bubble chart
 
 public/
   corpora/          # Built-in text files (cleaned, plain text)
-    fr/             # French (Voltaire, etc.)
-    la/             # Latin (Cicero, etc.)
-    grc/            # Ancient Greek (Plato, Homer, etc.)
-    nl/             # Dutch (Multatuli, etc.)
-    en/             # English (Shakespeare, etc.)
-    it/             # Italian (Dante, etc.)
-    es/             # Spanish (Cervantes, etc.)
-    de/             # German (Goethe, etc.)
+    grc/            # Ancient Greek (Homer, Plato, etc.)
+    la/             # Latin (Cicero, Virgil, etc.)
+    fro/            # Old French (Chanson de Roland, Chrétien de Troyes, etc.)
+    fr/             # French (Voltaire, Hugo, etc.)
+    en/             # English (Shakespeare, Austen, etc.)
+    de/             # German (Goethe, Kafka, etc.)
+    nl/             # Dutch (Multatuli, Vondel, etc.)
+    it/             # Italian (Dante, Machiavelli, etc.)
+    es/             # Spanish (Cervantes, Calderón, etc.)
 ```
 
 ## Key Architecture Decisions
@@ -62,11 +73,14 @@ public/
 - **Corpus metadata** lives in `src/data/catalog.json`. Each entry has: id, title, author, language, period, source, gutenbergId (optional), textPath.
 - **Two token levels:** character-level (letters only) and word-level (whitespace split, punctuation filtered).
 
-## Three Main Sections
+## Pages
 
-1. **Library** — Browse/search/filter built-in corpora, select for analysis.
-2. **Analyze** — Run full analysis pipeline on a text: frequencies, entropy, Zipf, word length stats, charts.
-3. **Compare** — Side-by-side comparison of two texts with overlay charts.
+1. **Home** — Overview with corpus bubble chart and timeline.
+2. **Library** — Browse/search/filter 108 built-in corpora, select for analysis.
+3. **Analyze** — Run full analysis pipeline on a text: frequencies, entropy, mutual information, word length stats, charts.
+4. **Compare** — Side-by-side comparison of two texts with overlay charts.
+5. **Formulas** — Collapsible accordion explaining the three core formulas with notation primer.
+6. **About** — Project context (Schola Nova), companion app explanation, credits, GitHub link.
 
 ## Coding Conventions
 
@@ -89,7 +103,7 @@ npm run typecheck # Type checking
 
 ## Supported Languages in Corpora
 
-French, Latin, Ancient Greek, Dutch, English, Italian, Spanish, German. Texts are public domain (Project Gutenberg). Each text file is manually cleaned before inclusion (no Gutenberg headers/footers, no editorial artifacts).
+Ancient Greek, Latin, Old French, French, English, German, Dutch, Italian, Spanish. 9 languages × 12 texts = 108 texts total. Sources: Project Gutenberg, Perseus Digital Library, Wikisource, DBNL, BFM (ENS Lyon). Each text file is manually cleaned before inclusion (no headers/footers, no editorial artifacts).
 
 ## Privacy
 

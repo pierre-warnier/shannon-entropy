@@ -15,7 +15,7 @@ This project brings that connection to life.
 
 This application was built as a companion to a mathematics project in **première secondaire** (first year of secondary school) in the **humanités gréco-latines** program at [Schola Nova](https://www.scholanova.be), a classical education school in Incourt, Walloon Brabant, Belgium.
 
-**This is not the project deliverable.** The school assignment was a written thesis analyzing Shannon entropy applied to ancient and modern languages. This web application was developed alongside it as an interactive tool to explore, visualize, and compare the results — a digital companion to the thesis.
+**This is not the assignment itself.** The school project was a written report analyzing Shannon entropy applied to ancient and modern languages. This web application was developed alongside it as an interactive tool to explore, visualize, and compare the results — a digital companion to the report.
 
 ## What it does
 
@@ -24,7 +24,7 @@ An interactive web application that lets you explore the **statistical structure
 Load a text — whether it's Cicero's *De Officiis* in Latin, Homer's *Iliad* in Ancient Greek, Voltaire's *Candide* in French, or Shakespeare's *Hamlet* in English — and the app instantly reveals:
 
 - **Letter frequency distributions** — Which letters dominate each language? Why does Latin love 'e' and 'i' while Greek favors 'α' and 'ε'?
-- **Word frequency & Zipf's law** — A stunning universal pattern: in *every* language, the most common word appears roughly twice as often as the second most common.
+- **Word frequency distributions** — Which words appear most often? Every language has its own signature pattern of function words and content words.
 - **Shannon entropy** — How many bits of information does each symbol carry? Is Greek more "unpredictable" than Latin? Is poetry more structured than prose?
 - **Word length distributions** — German words are famously long. But how does Ancient Greek compare to Dutch? To Spanish?
 - **Mutual information** — When you see the word *"senatus"* in Latin, can you predict the next word? This measures how much context matters.
@@ -44,7 +44,7 @@ The app includes an interactive **Formulas** page explaining the three core form
 - **Bubble chart** with convex hull "potatoes" per language group, togglable between group mode (smooth organic hulls) and bubble mode (sized markers)
 - **Timeline chart** showing entropy across centuries with per-language trend lines
 - **Side-by-side comparison** of any two texts
-- **Interactive Zipf plots**, letter frequency charts, word length distributions
+- **Letter frequency charts**, word frequency charts, word length distributions
 
 ## The corpus
 
@@ -79,7 +79,7 @@ Cloudflare Pages         Hosting (static site)
 
 ### Architecture
 
-- **Real-time analysis**: texts are analyzed in the browser using a Web Worker — letter/word frequencies, entropy, mutual information, Zipf's law
+- **Real-time analysis**: texts are analyzed in the browser using a Web Worker — letter/word frequencies, entropy, mutual information
 - **Precomputed statistics**: per-language trends (linear regression), convex hulls, and summary stats are computed at build time via `scripts/compute-stats.ts`
 - **Trilingual i18n**: full French, English, and Dutch translations
 - **Responsive**: works on mobile, tablet, and desktop
@@ -89,7 +89,7 @@ Cloudflare Pages         Hosting (static site)
 ```
 src/
   analysis/       Pure computation (entropy, mutual info, tokenization)
-  charts/         Plotly chart components (bubble, timeline, Zipf, etc.)
+  charts/         Plotly chart components (bubble, timeline, letter freq, etc.)
   components/     Shared UI components (SearchableSelect, etc.)
   data/           Catalog, precomputed stats, trends, hulls, author images
   i18n/           Translations (FR/EN/NL) and Wikipedia URL mappings
