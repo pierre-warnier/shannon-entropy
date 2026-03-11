@@ -202,6 +202,19 @@ const fr = {
   'chart.bubble.wordH': 'Entropie mots',
   'chart.bubble.meanLen': 'Long. moy. mots',
   'chart.bubble.vocRich': 'Richesse lexicale',
+  'chart.wl.normal': 'Distribution',
+  'chart.wl.vsLang': 'Δ vs {lang}',
+  'chart.wl.relFreq': 'Fréquence relative',
+  'chart.wl.delta': 'Écart (points de %)',
+  'chart.wl.textLabel': 'Ce texte',
+  'chart.wl.langAvg': 'Moyenne {lang}',
+  'chart.wl.noLang': 'Aucune langue détectée pour la comparaison',
+  'chart.wl.above': 'au-dessus',
+  'chart.wl.below': 'en-dessous',
+
+  // Language detection
+  'detect.detected': 'Langue détectée : {lang}',
+  'detect.unknown': 'Langue non reconnue',
 
   // File upload
   'upload.drop': 'Déposez un fichier {ext} ici',
@@ -572,6 +585,18 @@ const en: TranslationKeys = {
   'chart.bubble.wordH': 'Word H',
   'chart.bubble.meanLen': 'Mean word length',
   'chart.bubble.vocRich': 'Vocabulary richness',
+  'chart.wl.normal': 'Distribution',
+  'chart.wl.vsLang': 'Δ vs {lang}',
+  'chart.wl.relFreq': 'Relative frequency',
+  'chart.wl.delta': 'Difference (pp)',
+  'chart.wl.textLabel': 'This text',
+  'chart.wl.langAvg': '{lang} average',
+  'chart.wl.noLang': 'No language detected for comparison',
+  'chart.wl.above': 'above',
+  'chart.wl.below': 'below',
+
+  'detect.detected': 'Detected language: {lang}',
+  'detect.unknown': 'Language not recognized',
 
   'upload.drop': 'Drop a {ext} file here',
   'upload.browse': 'or click to browse',
@@ -930,6 +955,18 @@ const nl: TranslationKeys = {
   'chart.bubble.wordH': 'Woord H',
   'chart.bubble.meanLen': 'Gem. woordlengte',
   'chart.bubble.vocRich': 'Lexicale rijkdom',
+  'chart.wl.normal': 'Verdeling',
+  'chart.wl.vsLang': 'Δ vs {lang}',
+  'chart.wl.relFreq': 'Relatieve frequentie',
+  'chart.wl.delta': 'Verschil (pp)',
+  'chart.wl.textLabel': 'Deze tekst',
+  'chart.wl.langAvg': '{lang} gemiddelde',
+  'chart.wl.noLang': 'Geen taal gedetecteerd voor vergelijking',
+  'chart.wl.above': 'boven',
+  'chart.wl.below': 'onder',
+
+  'detect.detected': 'Taal gedetecteerd: {lang}',
+  'detect.unknown': 'Taal niet herkend',
 
   'upload.drop': 'Sleep een {ext}-bestand hierheen',
   'upload.browse': 'of klik om te bladeren',

@@ -1452,30 +1452,6 @@
     "totalWords": 7563
   },
   {
-    "id": "ar-quran-al-baqara",
-    "title": "Al-Baqara (Sourate de la Vache)",
-    "author": "Quran",
-    "language": "Arabic",
-    "period": "7th century",
-    "letterEntropy": 4.121,
-    "wordEntropy": 9.73,
-    "meanWordLength": 4.27,
-    "vocabularyRichness": 0.3679,
-    "totalWords": 6145
-  },
-  {
-    "id": "ar-muallaqat",
-    "title": "Al-Mu'allaqat (Les Suspendues)",
-    "author": "Pre-Islamic Poets",
-    "language": "Arabic",
-    "period": "6th century",
-    "letterEntropy": 4.334,
-    "wordEntropy": 11.19,
-    "meanWordLength": 4.85,
-    "vocabularyRichness": 0.6209,
-    "totalWords": 5861
-  },
-  {
     "id": "ar-abu-nuwas-poems",
     "title": "Diwan (Poèmes choisis)",
     "author": "Abu Nuwas",
@@ -1500,111 +1476,15 @@
     "totalWords": 157566
   },
   {
-    "id": "ar-mutanabbi-diwan",
-    "title": "Diwan Al-Mutanabbi",
-    "author": "Al-Mutanabbi",
-    "language": "Arabic",
-    "period": "10th century",
-    "letterEntropy": 4.265,
-    "wordEntropy": 11.69,
-    "meanWordLength": 4.12,
-    "vocabularyRichness": 0.4916,
-    "totalWords": 18211
-  },
-  {
-    "id": "ar-ibn-sina-qanun",
-    "title": "Al-Qanun fi al-Tibb (Canon)",
-    "author": "Ibn Sina",
-    "language": "Arabic",
-    "period": "11th century",
-    "letterEntropy": 4.291,
-    "wordEntropy": 11.6,
-    "meanWordLength": 4.47,
-    "vocabularyRichness": 0.1951,
-    "totalWords": 103302
-  },
-  {
-    "id": "ar-ghazali-works",
-    "title": "Ihya Ulum al-Din (extraits)",
-    "author": "Al-Ghazali",
-    "language": "Arabic",
-    "period": "12th century",
-    "letterEntropy": 4.25,
-    "wordEntropy": 11.67,
-    "meanWordLength": 4.27,
-    "vocabularyRichness": 0.2055,
-    "totalWords": 114126
-  },
-  {
     "id": "ar-ibn-khaldun-muqaddimah",
     "title": "Al-Muqaddimah (Prolégomènes)",
     "author": "Ibn Khaldun",
     "language": "Arabic",
     "period": "14th century",
-    "letterEntropy": 4.243,
-    "wordEntropy": 10.82,
-    "meanWordLength": 4.47,
-    "vocabularyRichness": 0.403,
-    "totalWords": 14006
-  },
-  {
-    "id": "ar-alf-layla",
-    "title": "Alf Layla wa-Layla (Mille et Une Nuits)",
-    "author": "Anonymous",
-    "language": "Arabic",
-    "period": "14th century",
-    "letterEntropy": 4.284,
-    "wordEntropy": 11.07,
-    "meanWordLength": 4.18,
-    "vocabularyRichness": 0.3175,
-    "totalWords": 25867
-  },
-  {
-    "id": "ar-shawqi-poetry",
-    "title": "Diwan Ahmad Shawqi",
-    "author": "Ahmad Shawqi",
-    "language": "Arabic",
-    "period": "20th century",
-    "letterEntropy": 4.291,
-    "wordEntropy": 12.3,
-    "meanWordLength": 4.27,
-    "vocabularyRichness": 0.4597,
-    "totalWords": 30701
-  },
-  {
-    "id": "ar-manfaluti-nazarat",
-    "title": "Al-Nazarat",
-    "author": "Mustafa Lutfi al-Manfaluti",
-    "language": "Arabic",
-    "period": "20th century",
-    "letterEntropy": 4.27,
-    "wordEntropy": 11.65,
-    "meanWordLength": 4.32,
-    "vocabularyRichness": 0.3757,
-    "totalWords": 37150
-  },
-  {
-    "id": "ar-gibran-works",
-    "title": "Al-Arwah al-Mutamarrida",
-    "author": "Gibran Khalil Gibran",
-    "language": "Arabic",
-    "period": "20th century",
-    "letterEntropy": 4.321,
-    "wordEntropy": 11.51,
-    "meanWordLength": 4.55,
-    "vocabularyRichness": 0.5115,
-    "totalWords": 14153
-  },
-  {
-    "id": "ar-taha-hussein-ayyam",
-    "title": "Al-Ayyam (Les Jours)",
-    "author": "Taha Hussein",
-    "language": "Arabic",
-    "period": "20th century",
-    "letterEntropy": 4.291,
-    "wordEntropy": 12.16,
-    "meanWordLength": 4.93,
-    "vocabularyRichness": 0.2386,
-    "totalWords": 86988
+    "letterEntropy": 4.25,
+    "wordEntropy": 12.6,
+    "meanWordLength": 4.26,
+    "vocabularyRichness": 0.2882,
+    "totalWords": 151746
   }
 ]

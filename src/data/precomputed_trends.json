@@ -71,9 +71,9 @@
   },
   {
     "language": "Arabic",
-    "slope": 0.00002892,
-    "intercept": 4.234,
-    "xMin": 550,
-    "xMax": 1950
+    "slope": -0.00006145,
+    "intercept": 4.3294,
+    "xMin": 750,
+    "xMax": 1350
   }
 ]

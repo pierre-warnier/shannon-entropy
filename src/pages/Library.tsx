@@ -17,6 +17,13 @@ import { MutualInformationChart } from '../charts/MutualInformationChart';
 
 const catalog = catalogData as CorpusMetadata[];
 
+/** Language code to display name mapping. */
+const LANG_CODE_TO_NAME: Record<string, string> = {
+  fr: 'French', en: 'English', de: 'German', nl: 'Dutch',
+  it: 'Italian', es: 'Spanish', la: 'Latin', fro: 'Old French',
+  grc: 'Ancient Greek', he: 'Hebrew', ar: 'Arabic',
+};
+
 /** Word count lookup from precomputed stats */
 const wordCountMap = new Map<string, number>(
   (precomputedStats as { id: string; totalWords?: number }[])
@@ -62,14 +69,19 @@ export default function Library() {
     loadText(corpus).then((text) => analyze(text, corpus.languageCode));
   }, [selectedId, loadText, analyze]);
 
-  // Scroll to analysis when results arrive
+  // When results arrive: scroll to analysis, and set detected language for uploads
   useEffect(() => {
-    if (result && analysisSectionRef.current) {
-      requestAnimationFrame(() =>
-        analysisSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
-      );
+    if (result) {
+      if (customUpload && result.detectedLanguageCode) {
+        setLanguage(LANG_CODE_TO_NAME[result.detectedLanguageCode] ?? '');
+      }
+      if (analysisSectionRef.current) {
+        requestAnimationFrame(() =>
+          analysisSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+        );
+      }
     }
-  }, [result]);
+  }, [result, customUpload]);
 
   const handleCardClick = useCallback(
     (id: string) => {
@@ -323,7 +335,7 @@ export default function Library() {
                   <WordChart words={result.topWordsFiltered} />
                 </div>
                 <div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
-                  <LengthChart distribution={result.wordLengthDistribution} />
+                  <LengthChart distribution={result.wordLengthDistribution} language={language || undefined} />
                 </div>
                 <div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
                   <MutualInformationChart pairs={result.mutualInformation} />

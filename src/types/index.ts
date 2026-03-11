@@ -23,6 +23,7 @@ export interface AnalysisResult {
   topWords: [string, number][];
   topWordsFiltered: [string, number][];
   mutualInformation: { pair: [string, string]; mi: number }[];
+  detectedLanguageCode?: string;
 }
 
 export interface TextSource {

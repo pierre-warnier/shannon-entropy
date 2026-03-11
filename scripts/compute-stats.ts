@@ -20,7 +20,7 @@ import { normalizeText } from '../src/analysis/preprocess.js';
 import { tokenizeCharacters, tokenizeWords } from '../src/analysis/tokenizer.js';
 import { letterFrequencies, wordFrequencies } from '../src/analysis/frequencies.js';
 import { shannonEntropy } from '../src/analysis/entropy.js';
-import { wordLengthStats } from '../src/analysis/wordLength.js';
+import { wordLengthDistribution, wordLengthStats } from '../src/analysis/wordLength.js';
 
 interface CatalogEntry {
   id: string;
@@ -51,6 +51,7 @@ function analyzeText(raw: string, langCode?: string): {
   meanWordLength: number;
   vocabularyRichness: number;
   totalWords: number;
+  wordLengthDist: Map<number, number>;
 } {
   const normalized = normalizeText(raw);
   const chars = tokenizeCharacters(normalized);
@@ -62,6 +63,7 @@ function analyzeText(raw: string, langCode?: string): {
   const letterH = shannonEntropy(letterFreqs);
   const wordH = shannonEntropy(wordFreqs);
   const stats = wordLengthStats(words);
+  const wlDist = wordLengthDistribution(words);
 
   const totalWords = words.length;
   const uniqueWords = wordFreqs.size;
@@ -73,6 +75,7 @@ function analyzeText(raw: string, langCode?: string): {
     meanWordLength: Math.round(stats.mean * 100) / 100,
     vocabularyRichness: Math.round(vocabularyRichness * 10000) / 10000,
     totalWords,
+    wordLengthDist: wlDist,
   };
 }
 
@@ -81,6 +84,7 @@ const catalogPath = resolve(ROOT, 'src/data/catalog.json');
 const catalog: CatalogEntry[] = JSON.parse(readFileSync(catalogPath, 'utf-8'));
 
 const results: StatEntry[] = [];
+const wordLengthDists = new Map<string, Map<number, number>[]>(); // language -> distributions
 let skipped = 0;
 
 for (const entry of catalog) {
@@ -102,13 +106,22 @@ for (const entry of catalog) {
 
   const stats = analyzeText(raw, entry.languageCode);
 
+  // Collect word length distributions per language
+  const langDists = wordLengthDists.get(entry.language) ?? [];
+  langDists.push(stats.wordLengthDist);
+  wordLengthDists.set(entry.language, langDists);
+
   results.push({
     id: entry.id,
     title: entry.title,
     author: entry.author,
     language: entry.language,
     period: entry.period,
-    ...stats,
+    letterEntropy: stats.letterEntropy,
+    wordEntropy: stats.wordEntropy,
+    meanWordLength: stats.meanWordLength,
+    vocabularyRichness: stats.vocabularyRichness,
+    totalWords: stats.totalWords,
   });
 
   console.log(
@@ -265,7 +278,40 @@ for (const [lang, items] of byLanguage.entries()) {
 const hullsPath = resolve(ROOT, 'src/data/precomputed_hulls.json');
 writeFileSync(hullsPath, JSON.stringify(hulls, null, 2) + '\n');
 
+// --- Compute per-language average word length distributions ---
+
+interface LangWordLengthDist {
+  language: string;
+  distribution: Record<number, number>; // length -> relative frequency (0-1)
+}
+
+const langWordLengths: LangWordLengthDist[] = [];
+
+for (const [lang, dists] of wordLengthDists.entries()) {
+  // Average relative frequencies across all texts in this language
+  const avgDist = new Map<number, number>();
+  for (const dist of dists) {
+    const total = Array.from(dist.values()).reduce((s, c) => s + c, 0);
+    if (total === 0) continue;
+    for (const [len, count] of dist) {
+      avgDist.set(len, (avgDist.get(len) ?? 0) + count / total);
+    }
+  }
+  // Divide by number of texts to get average relative frequency
+  const n = dists.length;
+  const result: Record<number, number> = {};
+  for (const [len, sum] of avgDist) {
+    result[len] = Math.round((sum / n) * 100000) / 100000;
+  }
+  langWordLengths.push({ language: lang, distribution: result });
+  console.log(`📊 ${lang.padEnd(15)} word-length dist: ${Object.keys(result).length} lengths`);
+}
+
+const wlPath = resolve(ROOT, 'src/data/precomputed_wordlengths.json');
+writeFileSync(wlPath, JSON.stringify(langWordLengths, null, 2) + '\n');
+
 console.log(`\nDone: ${results.length} texts analyzed, ${skipped} skipped.`);
 console.log(`Output: ${outPath}`);
 console.log(`Trends: ${trendsPath} (${trends.length} languages)`);
 console.log(`Hulls: ${hullsPath} (${hulls.length} languages)`);
+console.log(`Word lengths: ${wlPath} (${langWordLengths.length} languages)`);

@@ -35,6 +35,7 @@ export function useAnalysis() {
           letterFrequencies: new Map(data.letterFrequencies),
           wordFrequencies: new Map(data.wordFrequencies),
           wordLengthDistribution: new Map(data.wordLengthDistribution),
+          detectedLanguageCode: data.detectedLanguageCode,
         };
         setResult(analysisResult);
         setAnalyzing(false);
