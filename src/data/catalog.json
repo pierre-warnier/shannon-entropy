@@ -1103,5 +1103,38 @@
     "period": "12th century",
     "source": "BFM (ENS Lyon)",
     "textPath": "/corpora/fro/eneas.txt"
+  },
+  {
+    "id": "it-dannunzio-linnocente",
+    "title": "L'Innocente",
+    "author": "Gabriele D'Annunzio",
+    "language": "Italian",
+    "languageCode": "it",
+    "period": "19th century",
+    "source": "Project Gutenberg",
+    "gutenbergId": 22642,
+    "textPath": "/corpora/it/dannunzio_linnocente.txt"
+  },
+  {
+    "id": "it-deledda-dopo-il-divorzio",
+    "title": "Dopo il divorzio",
+    "author": "Grazia Deledda",
+    "language": "Italian",
+    "languageCode": "it",
+    "period": "20th century",
+    "source": "Project Gutenberg",
+    "gutenbergId": 43226,
+    "textPath": "/corpora/it/deledda_dopo_il_divorzio.txt"
+  },
+  {
+    "id": "it-aleramo-una-donna",
+    "title": "Una Donna",
+    "author": "Sibilla Aleramo",
+    "language": "Italian",
+    "languageCode": "it",
+    "period": "20th century",
+    "source": "Project Gutenberg",
+    "gutenbergId": 47786,
+    "textPath": "/corpora/it/aleramo_una_donna.txt"
   }
 ]

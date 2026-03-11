@@ -15,51 +15,51 @@
   },
   {
     "language": "Ancient Greek",
-    "slope": -0.00030861,
-    "intercept": 4.0413,
+    "slope": -0.00030951,
+    "intercept": 4.0481,
     "xMin": -750,
     "xMax": -350
   },
   {
     "language": "Dutch",
-    "slope": -0.00016667,
-    "intercept": 4.3881,
+    "slope": -0.00012566,
+    "intercept": 4.3154,
     "xMin": 1650,
     "xMax": 1950
   },
   {
     "language": "English",
-    "slope": 0.00001906,
-    "intercept": 4.1381,
+    "slope": 0.00001786,
+    "intercept": 4.1401,
     "xMin": 1650,
     "xMax": 1850
   },
   {
     "language": "Italian",
-    "slope": 0.00000128,
-    "intercept": 4.0062,
+    "slope": -0.00001497,
+    "intercept": 4.0303,
     "xMin": 1350,
     "xMax": 1950
   },
   {
     "language": "Spanish",
-    "slope": 0.00017575,
-    "intercept": 3.7568,
+    "slope": 0.00009084,
+    "intercept": 3.8928,
     "xMin": 1550,
     "xMax": 1850
   },
   {
     "language": "German",
-    "slope": -0.00006846,
-    "intercept": 4.2194,
+    "slope": -0.00008794,
+    "intercept": 4.2583,
     "xMin": 1750,
     "xMax": 1950
   },
   {
     "language": "Old French",
-    "slope": -0.0001929,
-    "intercept": 4.1923,
+    "slope": -0.0001559,
+    "intercept": 4.15,
     "xMin": 1050,
-    "xMax": 1250
+    "xMax": 1350
   }
 ]
