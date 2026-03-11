@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import Plot from 'react-plotly.js';
 import type { Config, Data, Layout } from 'plotly.js-dist-min';
 import { useI18n } from '../i18n/I18nContext';
@@ -81,7 +81,11 @@ export function CorpusBubbleChart({
   const { t } = useI18n();
   const [mode, setMode] = useState<EntropyMode>('letter');
   const [showHulls, setShowHulls] = useState(true);
+  const [hiddenLangs, setHiddenLangs] = useState<Set<string>>(new Set());
   const resolvedTitle = title ?? t('chart.bubbleTitle');
+
+  // Track all language keys so we can map legend index → language
+  const langKeysRef = useRef<string[]>([]);
 
   // Group by language for legend, sorted by translated name
   const byLangUnsorted = new Map<string, BubbleEntry[]>();
@@ -94,6 +98,9 @@ export function CorpusBubbleChart({
     t(`lang.${a}` as Parameters<typeof t>[0]).localeCompare(t(`lang.${b}` as Parameters<typeof t>[0])),
   );
   const byLang = new Map(sortedLangs.map((l) => [l, byLangUnsorted.get(l)!]));
+
+  // Store sorted lang keys for legend event handling
+  langKeysRef.current = sortedLangs;
 
   // Normalize bubble size: vocabulary richness → marker size (10–45)
   const allRichness = entries.map((e) => e.vocabularyRichness);
@@ -117,12 +124,14 @@ export function CorpusBubbleChart({
       const smooth = smoothClosed(rawHull);
       const color = LANGUAGE_COLORS[h.language] ?? '#64748b';
       const langLabel = t(`lang.${h.language}` as Parameters<typeof t>[0]);
+      const isHidden = hiddenLangs.has(h.language);
       data.push({
         type: 'scatter' as const,
         mode: 'lines' as const,
         name: langLabel,
         legendgroup: h.language,
         showlegend: false,
+        visible: isHidden ? 'legendonly' : true,
         x: smooth.map((p) => p[0]),
         y: smooth.map((p) => p[1]),
         fill: 'toself',
@@ -142,11 +151,13 @@ export function CorpusBubbleChart({
 
   // Markers: dots in potato mode, sized bubbles in bubble mode
   for (const [lang, items] of byLang.entries()) {
+    const isHidden = hiddenLangs.has(lang);
     data.push({
       type: 'scatter' as const,
       mode: 'markers' as const,
       name: t(`lang.${lang}` as Parameters<typeof t>[0]),
       legendgroup: lang,
+      visible: isHidden ? 'legendonly' : true,
       x: items.map((e) => (mode === 'letter' ? e.letterEntropy : e.wordEntropy)),
       y: items.map((e) => e.meanWordLength),
       text: items.map(
@@ -245,9 +256,60 @@ export function CorpusBubbleChart({
     ],
   };
 
+  // Intercept legend click to track hidden languages in our state
+  const handleLegendClick = useCallback((e: { curveNumber: number }) => {
+    const idx = e.curveNumber;
+    const clickedTrace = data[idx];
+    if (!clickedTrace) return true;
+    const lang = (clickedTrace as { legendgroup?: string }).legendgroup;
+    if (!lang) return true;
+
+    setHiddenLangs((prev) => {
+      const next = new Set(prev);
+      if (next.has(lang)) {
+        next.delete(lang);
+      } else {
+        next.add(lang);
+      }
+      return next;
+    });
+    return false; // prevent Plotly's default
+  }, [data]);
+
+  const handleLegendDoubleClick = useCallback((e: { curveNumber: number }) => {
+    const idx = e.curveNumber;
+    const clickedTrace = data[idx];
+    if (!clickedTrace) return true;
+    const lang = (clickedTrace as { legendgroup?: string }).legendgroup;
+    if (!lang) return true;
+
+    setHiddenLangs((prev) => {
+      const allLangs = langKeysRef.current;
+      // If only this one is visible, show all (reset)
+      const currentlyVisible = allLangs.filter((l) => !prev.has(l));
+      if (currentlyVisible.length === 1 && currentlyVisible[0] === lang) {
+        return new Set();
+      }
+      // Otherwise, hide all except this one
+      return new Set(allLangs.filter((l) => l !== lang));
+    });
+    return false;
+  }, [data]);
+
+  const hasHidden = hiddenLangs.size > 0;
+
   return (
     <div className="min-h-[450px] w-full sm:min-h-[500px]">
       <div className="mb-2 flex items-center justify-end gap-2">
+        {hasHidden && (
+          <button
+            type="button"
+            onClick={() => setHiddenLangs(new Set())}
+            className="rounded-md border border-slate-200 bg-white px-2.5 py-1 text-xs font-medium text-slate-600 shadow-sm transition-colors hover:bg-slate-50"
+          >
+            {t('chart.resetView')}
+          </button>
+        )}
         <label className="flex cursor-pointer items-center gap-1.5 text-xs text-slate-500">
           <button
             type="button"
@@ -295,6 +357,8 @@ export function CorpusBubbleChart({
         config={plotConfig}
         useResizeHandler={true}
         style={{ width: '100%', height: '100%' }}
+        onLegendClick={handleLegendClick as never}
+        onLegendDoubleClick={handleLegendDoubleClick as never}
       />
     </div>
   );

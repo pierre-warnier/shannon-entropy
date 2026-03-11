@@ -52,6 +52,7 @@ function analyzeText(raw: string, langCode?: string): {
   vocabularyRichness: number;
   totalWords: number;
   wordLengthDist: Map<number, number>;
+  letterFreqs: Map<string, number>;
 } {
   const normalized = normalizeText(raw);
   const chars = tokenizeCharacters(normalized);
@@ -76,6 +77,7 @@ function analyzeText(raw: string, langCode?: string): {
     vocabularyRichness: Math.round(vocabularyRichness * 10000) / 10000,
     totalWords,
     wordLengthDist: wlDist,
+    letterFreqs,
   };
 }
 
@@ -85,6 +87,7 @@ const catalog: CatalogEntry[] = JSON.parse(readFileSync(catalogPath, 'utf-8'));
 
 const results: StatEntry[] = [];
 const wordLengthDists = new Map<string, Map<number, number>[]>(); // language -> distributions
+const letterFreqDists = new Map<string, Map<string, number>[]>(); // language -> letter freq distributions
 let skipped = 0;
 
 for (const entry of catalog) {
@@ -110,6 +113,11 @@ for (const entry of catalog) {
   const langDists = wordLengthDists.get(entry.language) ?? [];
   langDists.push(stats.wordLengthDist);
   wordLengthDists.set(entry.language, langDists);
+
+  // Collect letter frequency distributions per language
+  const langLetterDists = letterFreqDists.get(entry.language) ?? [];
+  langLetterDists.push(stats.letterFreqs);
+  letterFreqDists.set(entry.language, langLetterDists);
 
   results.push({
     id: entry.id,
@@ -310,8 +318,39 @@ for (const [lang, dists] of wordLengthDists.entries()) {
 const wlPath = resolve(ROOT, 'src/data/precomputed_wordlengths.json');
 writeFileSync(wlPath, JSON.stringify(langWordLengths, null, 2) + '\n');
 
+// --- Compute per-language average letter frequency distributions ---
+
+interface LangLetterFreqDist {
+  language: string;
+  distribution: Record<string, number>; // letter -> relative frequency (0-1)
+}
+
+const langLetterFreqs: LangLetterFreqDist[] = [];
+
+for (const [lang, dists] of letterFreqDists.entries()) {
+  const avgDist = new Map<string, number>();
+  for (const dist of dists) {
+    const total = Array.from(dist.values()).reduce((s, c) => s + c, 0);
+    if (total === 0) continue;
+    for (const [letter, count] of dist) {
+      avgDist.set(letter, (avgDist.get(letter) ?? 0) + count / total);
+    }
+  }
+  const n = dists.length;
+  const result: Record<string, number> = {};
+  for (const [letter, sum] of avgDist) {
+    result[letter] = Math.round((sum / n) * 100000) / 100000;
+  }
+  langLetterFreqs.push({ language: lang, distribution: result });
+  console.log(`🔤 ${lang.padEnd(15)} letter-freq dist: ${Object.keys(result).length} letters`);
+}
+
+const lfPath = resolve(ROOT, 'src/data/precomputed_letterfreqs.json');
+writeFileSync(lfPath, JSON.stringify(langLetterFreqs, null, 2) + '\n');
+
 console.log(`\nDone: ${results.length} texts analyzed, ${skipped} skipped.`);
 console.log(`Output: ${outPath}`);
 console.log(`Trends: ${trendsPath} (${trends.length} languages)`);
 console.log(`Hulls: ${hullsPath} (${hulls.length} languages)`);
 console.log(`Word lengths: ${wlPath} (${langWordLengths.length} languages)`);
+console.log(`Letter freqs: ${lfPath} (${langLetterFreqs.length} languages)`);

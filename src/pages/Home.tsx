@@ -131,7 +131,6 @@ export default function Home() {
             entries={timelineData}
             title={t('chart.timeline.title')}
             xLabel={t('chart.timeline.period')}
-            yLabel={t('chart.timeline.y')}
           />
         </div>
       </section>

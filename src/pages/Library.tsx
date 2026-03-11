@@ -347,7 +347,7 @@ export default function Library() {
 
               <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
                 <div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
-                  <LetterChart frequencies={result.letterFrequencies} />
+                  <LetterChart frequencies={result.letterFrequencies} language={language || undefined} />
                 </div>
                 <div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
                   <h4 className="mb-2 text-sm font-medium text-slate-700 sm:mb-3">{t('analyze.topWords')}</h4>
