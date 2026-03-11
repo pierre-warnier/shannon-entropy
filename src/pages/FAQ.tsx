@@ -617,6 +617,48 @@ export default function FAQ() {
             — {t('faq.further.shannonDesc' as any)}
           </li>
         </ul>
+
+        <h3 className="mb-3 mt-6 text-sm font-semibold text-slate-700 sm:text-base">
+          {t('faq.further.videos' as any)}
+        </h3>
+        <ul className="space-y-1.5 text-sm text-slate-600">
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=v68zYyaEmEA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.3b1b' as any)}
+            </a>{' '}
+            — {t('faq.further.3b1bDesc' as any)}{' '}
+            <span className="text-slate-400">(EN)</span>
+          </li>
+          <li>
+            <a
+              href="https://www.khanacademy.org/computing/computer-science/informationtheory"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.khan' as any)}
+            </a>{' '}
+            — {t('faq.further.khanDesc' as any)}{' '}
+            <span className="text-slate-400">(EN)</span>
+          </li>
+          <li>
+            <a
+              href="https://www.khanacademy.org/computing/computer-science/informationtheory/moderninfotheory/v/information-entropy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.khanEntropy' as any)}
+            </a>{' '}
+            — {t('faq.further.khanEntropyDesc' as any)}{' '}
+            <span className="text-slate-400">(EN)</span>
+          </li>
+        </ul>
       </section>
     </div>
   );
