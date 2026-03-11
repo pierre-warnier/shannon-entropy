@@ -233,6 +233,8 @@ export default function Library() {
                   <span>{t(`lang.${corpus.language}` as Parameters<typeof t>[0])}</span>
                   <span className="text-slate-300">|</span>
                   <span>{t(`period.${corpus.period}` as Parameters<typeof t>[0])}</span>
+                  <span className="text-slate-300">|</span>
+                  <span className="italic">{corpus.source}</span>
                 </div>
               </div>
             </button>

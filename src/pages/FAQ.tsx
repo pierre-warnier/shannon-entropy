@@ -249,6 +249,110 @@ export default function FAQ() {
           </div>
         </div>
 
+        {/* Yes/No game concrete example */}
+        <div className="mt-5 rounded-lg border border-purple-200 bg-purple-50/60 p-4 sm:mt-6 sm:p-5">
+          <h4 className="mb-3 text-sm font-semibold text-purple-900 sm:text-base">
+            {t('faq.h.game.title' as any)}
+          </h4>
+          <p className="mb-3 text-xs leading-relaxed text-purple-800 sm:text-sm">
+            {t('faq.h.game.intro' as any)}
+          </p>
+
+          {/* Scenario: guessing a letter */}
+          <div className="space-y-2">
+            {/* Round 1: common letter */}
+            <div className="rounded-lg bg-white p-3 sm:p-4">
+              <p className="mb-2 text-xs font-semibold text-slate-800 sm:text-sm">
+                {t('faq.h.game.round1.title' as any)}
+              </p>
+              <div className="space-y-1.5 font-mono text-[11px] text-slate-600 sm:text-xs">
+                <p>
+                  <span className="font-semibold text-purple-700">Q1 :</span>{' '}
+                  {t('faq.h.game.round1.q1' as any)}
+                  <span className="ml-2 font-sans font-semibold text-green-700">
+                    {t('faq.h.game.yes' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q2 :</span>{' '}
+                  {t('faq.h.game.round1.q2' as any)}
+                  <span className="ml-2 font-sans font-semibold text-green-700">
+                    {t('faq.h.game.yes' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q3 :</span>{' '}
+                  {t('faq.h.game.round1.q3' as any)}
+                  <span className="ml-2 font-sans font-semibold text-green-700">
+                    {t('faq.h.game.yes' as any)}
+                  </span>
+                </p>
+              </div>
+              <p className="mt-2 text-[11px] text-slate-500 sm:text-xs">
+                {t('faq.h.game.round1.result' as any)}
+              </p>
+            </div>
+
+            {/* Round 2: rare letter */}
+            <div className="rounded-lg bg-white p-3 sm:p-4">
+              <p className="mb-2 text-xs font-semibold text-slate-800 sm:text-sm">
+                {t('faq.h.game.round2.title' as any)}
+              </p>
+              <div className="space-y-1.5 font-mono text-[11px] text-slate-600 sm:text-xs">
+                <p>
+                  <span className="font-semibold text-purple-700">Q1 :</span>{' '}
+                  {t('faq.h.game.round2.q1' as any)}
+                  <span className="ml-2 font-sans font-semibold text-red-600">
+                    {t('faq.h.game.no' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q2 :</span>{' '}
+                  {t('faq.h.game.round2.q2' as any)}
+                  <span className="ml-2 font-sans font-semibold text-red-600">
+                    {t('faq.h.game.no' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q3 :</span>{' '}
+                  {t('faq.h.game.round2.q3' as any)}
+                  <span className="ml-2 font-sans font-semibold text-red-600">
+                    {t('faq.h.game.no' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q4 :</span>{' '}
+                  {t('faq.h.game.round2.q4' as any)}
+                  <span className="ml-2 font-sans font-semibold text-red-600">
+                    {t('faq.h.game.no' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q5 :</span>{' '}
+                  {t('faq.h.game.round2.q5' as any)}
+                  <span className="ml-2 font-sans font-semibold text-green-700">
+                    {t('faq.h.game.yes' as any)}
+                  </span>
+                </p>
+                <p>
+                  <span className="font-semibold text-purple-700">Q6 :</span>{' '}
+                  {t('faq.h.game.round2.q6' as any)}
+                  <span className="ml-2 font-sans font-semibold text-green-700">
+                    {t('faq.h.game.yes' as any)}
+                  </span>
+                </p>
+              </div>
+              <p className="mt-2 text-[11px] text-slate-500 sm:text-xs">
+                {t('faq.h.game.round2.result' as any)}
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-3 text-xs leading-relaxed text-purple-800 sm:text-sm">
+            {t('faq.h.game.conclusion' as any)}
+          </p>
+        </div>
+
         <div className="mt-5 rounded-lg bg-purple-50 p-4 sm:mt-6">
           <h4 className="mb-2 text-sm font-semibold text-purple-900">
             {t('faq.h.why.title' as any)}
