@@ -89,7 +89,7 @@ const authorImages: Record<string, string> = {
   'Émile Zola': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Nadar_%28atelier_de%29_-_Emile_Zola%2C_13-556535.jpg/330px-Nadar_%28atelier_de%29_-_Emile_Zola%2C_13-556535.jpg',
   'Torah': 'https://upload.wikimedia.org/wikipedia/commons/9/96/SeferTorah.jpg',
   'Tanakh': 'https://upload.wikimedia.org/wikipedia/commons/9/96/SeferTorah.jpg',
-  'Judah Halevi': 'https://upload.wikimedia.org/wikipedia/commons/3/31/Yehuda_halevi.png',
+  'Judah Halevi': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Judah_Halevi.jpg/330px-Judah_Halevi.jpg',
   'Maimonides': 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Maimonides_bas-relief_in_the_U.S._House_of_Representatives_chamber_cropped.jpg',
   'Mendele Mocher Sforim': 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Mendele_Mocher_Sforim.jpg',
   'Sholem Aleichem': 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Sholem_Aleichem_1907.jpg',
