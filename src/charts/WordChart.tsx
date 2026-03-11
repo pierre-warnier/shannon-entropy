@@ -67,14 +67,17 @@ export function WordChart({ words }: WordChartProps) {
       .spiral('archimedean')
       .on('end', (output) => {
         setLayoutWords(
-          output.map((w) => ({
-            text: w.text!,
-            size: w.size!,
-            count: (w as typeof cloudWords[number]).count,
-            x: w.x!,
-            y: w.y!,
-            rotate: w.rotate!,
-          })),
+          output.map((w) => {
+            const cw = w as typeof cloudWords[number] & { x: number; y: number; rotate: number };
+            return {
+              text: cw.text!,
+              size: cw.size!,
+              count: cw.count,
+              x: cw.x,
+              y: cw.y,
+              rotate: cw.rotate,
+            };
+          }),
         );
       })
       .start();

@@ -94,7 +94,7 @@ export function TimelineChart({
     byLangUnsorted.set(e.language, arr);
   }
   const sortedLangs = Array.from(byLangUnsorted.keys()).sort((a, b) =>
-    t(`lang.${a}`).localeCompare(t(`lang.${b}`)),
+    t(`lang.${a}` as Parameters<typeof t>[0]).localeCompare(t(`lang.${b}` as Parameters<typeof t>[0])),
   );
   const byLang = new Map(sortedLangs.map((l) => [l, byLangUnsorted.get(l)!]));
 

@@ -91,7 +91,7 @@ export function CorpusBubbleChart({
     byLangUnsorted.set(e.language, arr);
   }
   const sortedLangs = Array.from(byLangUnsorted.keys()).sort((a, b) =>
-    t(`lang.${a}`).localeCompare(t(`lang.${b}`)),
+    t(`lang.${a}` as Parameters<typeof t>[0]).localeCompare(t(`lang.${b}` as Parameters<typeof t>[0])),
   );
   const byLang = new Map(sortedLangs.map((l) => [l, byLangUnsorted.get(l)!]));
 
@@ -108,7 +108,7 @@ export function CorpusBubbleChart({
 
   // Smooth "potato" fills behind markers (sorted to match legend order)
   const sortedHulls = [...precomputedHulls].sort((a, b) =>
-    t(`lang.${a.language}`).localeCompare(t(`lang.${b.language}`)),
+    t(`lang.${a.language}` as Parameters<typeof t>[0]).localeCompare(t(`lang.${b.language}` as Parameters<typeof t>[0])),
   );
   if (showHulls) {
     for (const h of sortedHulls) {
@@ -116,7 +116,7 @@ export function CorpusBubbleChart({
       if (rawHull.length < 3) continue;
       const smooth = smoothClosed(rawHull);
       const color = LANGUAGE_COLORS[h.language] ?? '#64748b';
-      const langLabel = t(`lang.${h.language}`);
+      const langLabel = t(`lang.${h.language}` as Parameters<typeof t>[0]);
       data.push({
         type: 'scatter' as const,
         mode: 'lines' as const,
@@ -145,7 +145,7 @@ export function CorpusBubbleChart({
     data.push({
       type: 'scatter' as const,
       mode: 'markers' as const,
-      name: t(`lang.${lang}`),
+      name: t(`lang.${lang}` as Parameters<typeof t>[0]),
       legendgroup: lang,
       x: items.map((e) => (mode === 'letter' ? e.letterEntropy : e.wordEntropy)),
       y: items.map((e) => e.meanWordLength),
@@ -153,7 +153,7 @@ export function CorpusBubbleChart({
         (e) =>
           `<b style="font-size:14px">${e.title}</b><br>` +
           `${e.author}<br>` +
-          `${t(`lang.${e.language}`)} · ${e.period}<br><br>` +
+          `${t(`lang.${e.language}` as Parameters<typeof t>[0])} · ${e.period}<br><br>` +
           `${t('chart.bubble.letterH')}: <b>${e.letterEntropy.toFixed(3)}</b> bits<br>` +
           `${t('chart.bubble.wordH')}: <b>${e.wordEntropy.toFixed(2)}</b> bits<br>` +
           `${t('chart.bubble.meanLen')}: <b>${e.meanWordLength.toFixed(2)}</b><br>` +
