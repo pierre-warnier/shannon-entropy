@@ -103,6 +103,7 @@ export function TimelineChart({
       type: 'scatter' as const,
       mode: 'markers' as const,
       name: lang,
+      legendgroup: lang,
       x: items.map((e) => PERIOD_YEARS[e.period] ?? 0),
       y: items.map((e) => e.letterEntropy),
       text: items.map(
@@ -133,11 +134,18 @@ export function TimelineChart({
         x: [trend.xMin, trend.xMax],
         y: [yStart, yEnd],
         line: { color: color + '60', width: 2, dash: 'dot' },
+        legendgroup: trend.language,
         showlegend: false,
         hoverinfo: 'skip',
       } as Data);
     }
   }
+
+  // Fix axis ranges so isolating a language doesn't rescale
+  const allX = entries.map((e) => PERIOD_YEARS[e.period] ?? 0);
+  const allY = entries.map((e) => e.letterEntropy);
+  const xPad = (Math.max(...allX) - Math.min(...allX)) * 0.05;
+  const yPad = (Math.max(...allY) - Math.min(...allY)) * 0.08;
 
   const layout: Partial<Layout> = {
     title: { text: title, font: { family: 'Inter, system-ui, sans-serif', size: 16 } },
@@ -152,12 +160,14 @@ export function TimelineChart({
       tickvals: sortedPeriods.map((p) => PERIOD_YEARS[p]),
       ticktext: sortedPeriods,
       tickangle: -30,
+      range: [Math.min(...allX) - xPad, Math.max(...allX) + xPad],
     },
     yaxis: {
       title: { text: yLabel },
       showgrid: true,
       gridcolor: '#f1f5f9',
       zeroline: false,
+      range: [Math.min(...allY) - yPad, Math.max(...allY) + yPad],
     },
     legend: {
       orientation: 'h',
