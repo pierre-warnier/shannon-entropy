@@ -14,6 +14,7 @@ const fr = {
   'nav.library': 'Bibliothèque',
   'nav.analyze': 'Analyser',
   'nav.compare': 'Comparer',
+  'nav.rankings': 'Palmarès',
   'nav.formulas': 'Formules',
   'nav.about': 'À propos',
   'app.title': 'Entropie de Shannon',
@@ -339,6 +340,17 @@ const fr = {
   'period.18th century': 'XVIIIe siècle',
   'period.19th century': 'XIXe siècle',
   'period.20th century': 'XXe siècle',
+
+  // Rankings
+  'rankings.title': 'Palmarès des auteurs',
+  'rankings.subtitle': 'Qui écrit de la manière la plus imprévisible ? Classement par entropie — une mesure de la complexité informationnelle de chaque texte.',
+  'rankings.byLetter': 'Par lettre',
+  'rankings.byWord': 'Par mot',
+  'rankings.mostComplex': 'Les plus complexes',
+  'rankings.mostDirect': 'Les plus directs',
+  'rankings.letterEntropy': 'Entropie par lettre (bits/caractère)',
+  'rankings.wordEntropy': 'Entropie par mot (bits/mot)',
+  'rankings.note': 'L\'entropie mesure l\'imprévisibilité statistique. Une entropie haute ne signifie pas « meilleur » — elle indique un vocabulaire plus riche ou une structure plus variée.',
 } as const;
 
 const en: TranslationKeys = {
@@ -346,6 +358,7 @@ const en: TranslationKeys = {
   'nav.library': 'Library',
   'nav.analyze': 'Analyze',
   'nav.compare': 'Compare',
+  'nav.rankings': 'Rankings',
   'nav.formulas': 'Formulas',
   'nav.about': 'About',
   'app.title': 'Shannon Entropy',
@@ -645,6 +658,17 @@ const en: TranslationKeys = {
   'period.18th century': '18th century',
   'period.19th century': '19th century',
   'period.20th century': '20th century',
+
+  // Rankings
+  'rankings.title': 'Author Rankings',
+  'rankings.subtitle': 'Who writes in the most unpredictable way? Ranked by entropy — a measure of the informational complexity of each text.',
+  'rankings.byLetter': 'By letter',
+  'rankings.byWord': 'By word',
+  'rankings.mostComplex': 'Most complex',
+  'rankings.mostDirect': 'Most direct',
+  'rankings.letterEntropy': 'Letter entropy (bits/char.)',
+  'rankings.wordEntropy': 'Word entropy (bits/word)',
+  'rankings.note': 'Entropy measures statistical unpredictability. High entropy does not mean "better" — it indicates a richer vocabulary or more varied structure.',
 };
 
 const nl: TranslationKeys = {
@@ -652,6 +676,7 @@ const nl: TranslationKeys = {
   'nav.library': 'Bibliotheek',
   'nav.analyze': 'Analyseren',
   'nav.compare': 'Vergelijken',
+  'nav.rankings': 'Ranglijst',
   'nav.formulas': 'Formules',
   'nav.about': 'Over',
   'app.title': 'Shannon-entropie',
@@ -951,6 +976,17 @@ const nl: TranslationKeys = {
   'period.18th century': '18e eeuw',
   'period.19th century': '19e eeuw',
   'period.20th century': '20e eeuw',
+
+  // Rankings
+  'rankings.title': 'Ranglijst van auteurs',
+  'rankings.subtitle': 'Wie schrijft het meest onvoorspelbaar? Gerangschikt op entropie — een maat voor de informatiecomplexiteit van elke tekst.',
+  'rankings.byLetter': 'Per letter',
+  'rankings.byWord': 'Per woord',
+  'rankings.mostComplex': 'Meest complex',
+  'rankings.mostDirect': 'Meest direct',
+  'rankings.letterEntropy': 'Letterentropie (bits/teken)',
+  'rankings.wordEntropy': 'Woordentropie (bits/woord)',
+  'rankings.note': 'Entropie meet statistische onvoorspelbaarheid. Hoge entropie betekent niet "beter" — het wijst op een rijkere woordenschat of meer gevarieerde structuur.',
 };
 
 export const translations: Record<Locale, TranslationKeys> = { fr, en, nl };

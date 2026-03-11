@@ -11,6 +11,7 @@ export default function App() {
     { to: '/', label: t('nav.home') },
     { to: '/library', label: t('nav.library') },
     { to: '/compare', label: t('nav.compare') },
+    { to: '/rankings', label: t('nav.rankings') },
     { to: '/formulas', label: t('nav.formulas') },
     { to: '/about', label: t('nav.about') },
   ];

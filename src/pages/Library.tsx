@@ -27,7 +27,6 @@ export default function Library() {
   const { loadText, loading: corpusLoading, error: corpusError } = useCorpus();
   const [title, setTitle] = useState('');
   const [language, setLanguage] = useState('');
-  const [showStopwords, setShowStopwords] = useState(false);
   const [customUpload, setCustomUpload] = useState(false);
   const analysisSectionRef = useRef<HTMLDivElement>(null);
 
@@ -286,28 +285,8 @@ export default function Library() {
                   <LetterChart frequencies={result.letterFrequencies} />
                 </div>
                 <div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
-                  <div className="mb-2 flex flex-wrap items-center justify-between gap-2 sm:mb-3">
-                    <h4 className="text-sm font-medium text-slate-700">{t('analyze.topWords')}</h4>
-                    <label className="flex cursor-pointer items-center gap-1.5 text-[10px] text-slate-500 sm:gap-2 sm:text-xs">
-                      <span className="hidden sm:inline">{showStopwords ? t('analyze.allWords') : t('analyze.contentWords')}</span>
-                      <button
-                        onClick={() => setShowStopwords(!showStopwords)}
-                        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-                          showStopwords ? 'bg-blue-600' : 'bg-slate-300'
-                        }`}
-                      >
-                        <span
-                          className={`inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform ${
-                            showStopwords ? 'translate-x-4.5' : 'translate-x-0.5'
-                          }`}
-                        />
-                      </button>
-                      <span>{t('analyze.stopwords')}</span>
-                    </label>
-                  </div>
-                  <WordChart
-                    words={showStopwords ? result.topWords : result.topWordsFiltered}
-                  />
+                  <h4 className="mb-2 text-sm font-medium text-slate-700 sm:mb-3">{t('analyze.topWords')}</h4>
+                  <WordChart words={result.topWordsFiltered} />
                 </div>
                 <div className="overflow-hidden rounded-lg border border-slate-200 bg-white p-3 shadow-sm sm:p-4">
                   <LengthChart distribution={result.wordLengthDistribution} />

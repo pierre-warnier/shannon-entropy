@@ -7,6 +7,7 @@ import { I18nProvider } from './i18n/I18nContext';
 import Home from './pages/Home';
 import Library from './pages/Library';
 import Compare from './pages/Compare';
+import Rankings from './pages/Rankings';
 import FAQ from './pages/FAQ';
 import About from './pages/About';
 
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
             <Route index element={<Home />} />
             <Route path="library" element={<Library />} />
             <Route path="compare" element={<Compare />} />
+            <Route path="rankings" element={<Rankings />} />
             <Route path="formulas" element={<FAQ />} />
             <Route path="about" element={<About />} />
           </Route>
