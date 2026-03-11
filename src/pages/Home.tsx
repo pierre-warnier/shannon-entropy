@@ -94,7 +94,7 @@ export default function Home() {
             {t('home.hero.cta.library')}
           </Link>
           <Link
-            to="/analyze"
+            to="/library"
             className="rounded-lg border border-slate-600 px-5 py-2.5 text-sm font-semibold text-slate-200 transition-colors hover:border-slate-400 hover:text-white sm:px-6 sm:py-3"
           >
             {t('home.hero.cta.analyze')}
@@ -138,7 +138,7 @@ export default function Home() {
         </div>
         <p className="mt-2 text-center text-[10px] text-slate-400 sm:text-xs">
           {t('home.bubble.note')}{' '}
-          <Link to="/analyze" className="text-blue-500 underline hover:text-blue-700">
+          <Link to="/library" className="text-blue-500 underline hover:text-blue-700">
             {t('home.bubble.cta')}
           </Link>
         </p>

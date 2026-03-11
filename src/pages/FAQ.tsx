@@ -433,7 +433,7 @@ export default function FAQ() {
         </p>
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
           <Link
-            to="/analyze"
+            to="/library"
             className="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-colors hover:bg-blue-700 sm:px-6 sm:py-3"
           >
             {t('faq.cta.analyze' as any)}

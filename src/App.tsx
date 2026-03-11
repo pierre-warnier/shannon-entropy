@@ -10,7 +10,6 @@ export default function App() {
   const navItems = [
     { to: '/', label: t('nav.home') },
     { to: '/library', label: t('nav.library') },
-    { to: '/analyze', label: t('nav.analyze') },
     { to: '/compare', label: t('nav.compare') },
     { to: '/formulas', label: t('nav.formulas') },
     { to: '/about', label: t('nav.about') },

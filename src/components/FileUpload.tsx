@@ -3,9 +3,10 @@ import { useI18n } from '../i18n/I18nContext';
 
 interface FileUploadProps {
   onTextLoaded: (text: string, filename: string) => void;
+  compact?: boolean;
 }
 
-export function FileUpload({ onTextLoaded }: FileUploadProps) {
+export function FileUpload({ onTextLoaded, compact }: FileUploadProps) {
   const { t } = useI18n();
   const [dragActive, setDragActive] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
@@ -60,6 +61,28 @@ export function FileUpload({ onTextLoaded }: FileUploadProps) {
     },
     [handleFile],
   );
+
+  if (compact) {
+    return (
+      <div
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        onClick={() => inputRef.current?.click()}
+        className={`flex shrink-0 cursor-pointer items-center gap-2 rounded-lg border-2 border-dashed px-3 py-2 text-xs font-medium transition-colors sm:px-4 sm:py-2.5 sm:text-sm ${
+          dragActive
+            ? 'border-blue-500 bg-blue-50 text-blue-600'
+            : 'border-slate-300 bg-white text-slate-600 hover:border-blue-400 hover:bg-slate-50'
+        }`}
+      >
+        <input ref={inputRef} type="file" accept=".txt" onChange={handleInputChange} className="hidden" />
+        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+        </svg>
+        {fileName ? <span className="max-w-[120px] truncate">{fileName}</span> : <span>{t('upload.browse')}</span>}
+      </div>
+    );
+  }
 
   return (
     <div
