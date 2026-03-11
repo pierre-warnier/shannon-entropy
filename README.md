@@ -48,19 +48,19 @@ The app includes an interactive **Formulas** page explaining the three core form
 
 ## The corpus
 
-108 texts, 12 per language (except Old French), covering classical antiquity through the 20th century:
+108 texts, 12 per language, covering classical antiquity through the 20th century:
 
-| Language | Texts | Example authors |
-|---|---|---|
-| **Ancient Greek** | 12 | Homer, Plato, Sophocles, Euripides, Aristotle, Aeschylus, Aristophanes, Xenophon |
-| **Latin** | 12 | Cicero, Virgil, Ovid, Caesar, Seneca, Lucretius, Apuleius, Boethius, Aquinas |
-| **French** | 12 | Voltaire, Hugo, Flaubert, Zola, Baudelaire, Racine, Molière, Dumas, Stendhal |
-| **English** | 12 | Shakespeare, Austen, Dickens, Brontë, Wilde, Milton, Shelley, Stoker, Melville |
-| **German** | 12 | Goethe, Kafka, Nietzsche, Schiller, Grimm, Fontane, Lessing, Heine, Storm |
-| **Dutch** | 12 | Multatuli, Couperus, Vondel, Conscience, Van Lennep, Hildebrand, Van Eeden |
-| **Italian** | 12 | Dante, Machiavelli, Manzoni, Boccaccio, Leopardi, Pirandello, Collodi, Goldoni |
-| **Spanish** | 12 | Cervantes, Lope de Vega, Calderón, Bécquer, Pérez Galdós, Pardo Bazán, Sor Juana |
-| **Old French** | 12 | Chanson de Roland, Chrétien de Troyes, Marie de France, Villehardouin, Froissart |
+| Language | Authors |
+|---|---|
+| **Ancient Greek** (12) | Aeschylus, Aristophanes, Aristotle, Euripides, Herodotus, Homer, Plato, Sophocles, Thucydides, Xenophon |
+| **Latin** (12) | Apuleius, Augustinus, Beda Venerabilis, Boethius, Caesar, Cicero, Lucretius, Ovid, Seneca, Thomas Aquinas, Virgil |
+| **Old French** (12) | *Chanson de Roland* (anon.), *Roman d'Enéas* (anon.), Chrétien de Troyes, Guillaume de Lorris, Marie de France, Geoffroi de Villehardouin, Jean Froissart |
+| **French** (12) | Baudelaire, Balzac, Dumas, Flaubert, Hugo, Molière, Racine, Rousseau, Stendhal, Voltaire, Zola |
+| **English** (12) | Austen, Brontë, Defoe, Dickens, Melville, Milton, Shakespeare, Shelley, Stoker, Swift, Twain, Wilde |
+| **German** (12) | Brüder Grimm, Fontane, Goethe, Heine, Kafka, Lessing, Nietzsche, Schiller, Storm |
+| **Dutch** (12) | Bosboom-Toussaint, Conscience, Couperus, Hildebrand, Multatuli, Van Eeden, Van Lennep, Van Schendel, Vondel |
+| **Italian** (12) | Aleramo, Boccaccio, Collodi, D'Annunzio, Dante, Deledda, Goldoni, Leopardi, Machiavelli, Manzoni, Pirandello |
+| **Spanish** (12) | Bécquer, Calderón, Cervantes, Clarín, Lope de Vega, Pardo Bazán, Pérez Galdós, Sor Juana, Valera |
 
 Sources: [Project Gutenberg](https://www.gutenberg.org/), [Perseus Digital Library](http://www.perseus.tufts.edu/), [Wikisource](https://wikisource.org/), [DBNL](https://www.dbnl.org/), [BFM (ENS Lyon)](http://bfm.ens-lyon.fr/)
 
