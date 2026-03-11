@@ -74,7 +74,7 @@ const fr = {
   'home.entropy.why.letterH': 'Entropie par lettre : l\'alphabet est-il bien utilisé ?',
   'home.entropy.why.letterH.text': 'Si une langue utilise ses lettres de manière équilibrée, chaque lettre est difficile à deviner : l\'entropie par lettre est haute. Si quelques lettres dominent (comme le « e » en français), l\'entropie baisse. C\'est une empreinte de l\'alphabet — le grec ancien (~4,2 bits) répartit mieux ses lettres que le français (~4,0 bits).',
   'home.entropy.why.wordH': 'Entropie par mot : le vocabulaire est-il riche ?',
-  'home.entropy.why.wordH.text': 'Plus une langue utilise de mots différents, plus chaque mot est surprenant et difficile à prédire. Le latin, avec sa riche {inflection} (cas, conjugaisons), génère des milliers de formes distinctes : son entropie par mot (~11,5 bits) dépasse largement celle du français (~9,5 bits), même si leurs lettres se ressemblent.',
+  'home.entropy.why.wordH.text': 'Plus une langue utilise de mots différents, plus chaque mot est surprenant et difficile à prédire. Le latin, avec sa riche {inflection} (cas, conjugaisons), génère des milliers de formes distinctes : son entropie par mot (~11,4 bits) dépasse largement celle du français (~9,5 bits), même si leurs lettres se ressemblent.',
   'home.entropy.why.bridge': 'L\'entropie relie mathématiques et humanités.',
   'home.entropy.why.bridge.text': 'Elle montre que les textes classiques, malgré leur beauté littéraire, suivent des motifs mathématiques mesurables — une idée clé de la {infoTheory}. Explorez les {formulas} pour comprendre en détail comment ces valeurs sont calculées.',
 
@@ -467,7 +467,7 @@ const en: TranslationKeys = {
   'home.entropy.why.letterH': 'Letter entropy: is the alphabet well used?',
   'home.entropy.why.letterH.text': 'If a language uses its letters evenly, each letter is hard to guess: letter entropy is high. If a few letters dominate (like "e" in French), entropy drops. It\'s an alphabet fingerprint — Ancient Greek (~4.2 bits) spreads its letters more evenly than French (~4.0 bits).',
   'home.entropy.why.wordH': 'Word entropy: is the vocabulary rich?',
-  'home.entropy.why.wordH.text': 'The more different words a language uses, the more surprising and hard to predict each word is. Latin, with its rich {inflection} (cases, conjugations), generates thousands of distinct forms: its word entropy (~11.5 bits) far exceeds French (~9.5 bits), even though their letters look similar.',
+  'home.entropy.why.wordH.text': 'The more different words a language uses, the more surprising and hard to predict each word is. Latin, with its rich {inflection} (cases, conjugations), generates thousands of distinct forms: its word entropy (~11.4 bits) far exceeds French (~9.5 bits), even though their letters look similar.',
   'home.entropy.why.bridge': 'Entropy connects mathematics and humanities.',
   'home.entropy.why.bridge.text': 'It shows that classical texts, despite their literary beauty, follow measurable mathematical patterns — a key idea of {infoTheory}. Explore the {formulas} to understand in detail how these values are calculated.',
 
@@ -838,7 +838,7 @@ const nl: TranslationKeys = {
   'home.entropy.why.letterH': 'Letterentropie: wordt het alfabet goed benut?',
   'home.entropy.why.letterH.text': 'Als een taal haar letters gelijkmatig gebruikt, is elke letter moeilijk te raden: de letterentropie is hoog. Als een paar letters domineren (zoals de "e" in het Frans), daalt de entropie. Het is een vingerafdruk van het alfabet — Oudgrieks (~4,2 bits) verdeelt zijn letters gelijkmatiger dan Frans (~4,0 bits).',
   'home.entropy.why.wordH': 'Woordentropie: is de woordenschat rijk?',
-  'home.entropy.why.wordH.text': 'Hoe meer verschillende woorden een taal gebruikt, hoe verrassender en moeilijker te voorspellen elk woord is. Latijn, met zijn rijke {inflection} (naamvallen, vervoegingen), genereert duizenden verschillende vormen: de woordentropie (~11,5 bits) overtreft die van het Frans (~9,5 bits) ruim, hoewel hun letters vergelijkbaar zijn.',
+  'home.entropy.why.wordH.text': 'Hoe meer verschillende woorden een taal gebruikt, hoe verrassender en moeilijker te voorspellen elk woord is. Latijn, met zijn rijke {inflection} (naamvallen, vervoegingen), genereert duizenden verschillende vormen: de woordentropie (~11,4 bits) overtreft die van het Frans (~9,5 bits) ruim, hoewel hun letters vergelijkbaar zijn.',
   'home.entropy.why.bridge': 'Entropie verbindt wiskunde en geesteswetenschappen.',
   'home.entropy.why.bridge.text': 'Het laat zien dat klassieke teksten, ondanks hun literaire schoonheid, meetbare wiskundige patronen volgen — een kernidee van {infoTheory}. Verken de {formulas} om precies te begrijpen hoe deze waarden worden berekend.',
 
