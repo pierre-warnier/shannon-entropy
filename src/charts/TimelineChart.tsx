@@ -150,25 +150,24 @@ export function TimelineChart({
     });
   }
 
-  // Add precomputed trend lines (letter mode only — trends are computed for letter entropy)
-  if (showTrends && mode === 'letter') {
-    for (const trend of trends) {
-      const color = LANGUAGE_COLORS[trend.language] ?? '#64748b';
-      const isHidden = hiddenLangs.has(trend.language);
-      const yStart = trend.slope * trend.xMin + trend.intercept;
-      const yEnd = trend.slope * trend.xMax + trend.intercept;
-      data.push({
-        type: 'scatter' as const,
-        mode: 'lines' as const,
-        x: [trend.xMin, trend.xMax],
-        y: [yStart, yEnd],
-        line: { color: color + '60', width: 2, dash: 'dot' },
-        legendgroup: trend.language,
-        showlegend: false,
-        visible: isHidden ? 'legendonly' : true,
-        hoverinfo: 'skip',
-      } as Data);
-    }
+  // Add precomputed trend lines (always present to keep trace count stable)
+  for (const trend of trends) {
+    const color = LANGUAGE_COLORS[trend.language] ?? '#64748b';
+    const isHidden = hiddenLangs.has(trend.language);
+    const showThis = showTrends && mode === 'letter' && !isHidden;
+    const yStart = trend.slope * trend.xMin + trend.intercept;
+    const yEnd = trend.slope * trend.xMax + trend.intercept;
+    data.push({
+      type: 'scatter' as const,
+      mode: 'lines' as const,
+      x: [trend.xMin, trend.xMax],
+      y: [yStart, yEnd],
+      line: { color: color + '60', width: 2, dash: 'dot' },
+      legendgroup: trend.language,
+      showlegend: false,
+      visible: showThis ? true : 'legendonly',
+      hoverinfo: 'skip',
+    } as Data);
   }
 
   // Fix axis ranges so isolating a language doesn't rescale
