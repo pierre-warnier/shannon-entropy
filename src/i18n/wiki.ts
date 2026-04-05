@@ -13,9 +13,8 @@ const WIKI_ARTICLES: Record<string, Partial<Record<Locale, string>>> = {
     nl: 'Claude_Shannon',
   },
   mathTheory: {
-    fr: 'Théorie_mathématique_de_la_communication',
+    fr: 'A_Mathematical_Theory_of_Communication',
     en: 'A_Mathematical_Theory_of_Communication',
-    nl: 'A_Mathematical_Theory_of_Communication',
   },
   entropy: {
     fr: 'Entropie_de_Shannon',
@@ -25,7 +24,6 @@ const WIKI_ARTICLES: Record<string, Partial<Record<Locale, string>>> = {
   infoContent: {
     fr: 'Contenu_informationnel',
     en: 'Information_content',
-    nl: 'Informatie-inhoud',
   },
   infoTheory: {
     fr: 'Théorie_de_l%27information',
@@ -40,7 +38,6 @@ const WIKI_ARTICLES: Record<string, Partial<Record<Locale, string>>> = {
   mutualInfo: {
     fr: 'Information_mutuelle',
     en: 'Mutual_information',
-    nl: 'Wederzijdse_informatie',
   },
   inflection: {
     fr: 'Flexion_(linguistique)',
@@ -60,37 +57,31 @@ const WIKI_ARTICLES: Record<string, Partial<Record<Locale, string>>> = {
   sentiment: {
     fr: 'Analyse_de_sentiments',
     en: 'Sentiment_analysis',
-    nl: 'Sentimentanalyse',
   },
   ner: {
     fr: 'Reconnaissance_d%27entités_nommées',
     en: 'Named-entity_recognition',
-    nl: 'Named-entity_recognition',
   },
   pos: {
     fr: 'Étiquetage_morpho-syntaxique',
     en: 'Part-of-speech_tagging',
-    nl: 'Part-of-speech_tagging',
   },
   topicModel: {
-    fr: 'Modèle_de_thèmes',
+    fr: 'Topic_model',
     en: 'Topic_model',
-    nl: 'Topic_model',
   },
   machineTranslation: {
     fr: 'Traduction_automatique',
     en: 'Machine_translation',
-    nl: 'Machinevertaling',
+    nl: 'Computervertaling',
   },
   wordEmbedding: {
     fr: 'Word_embedding',
     en: 'Word_embedding',
-    nl: 'Word_embedding',
   },
   letterFrequency: {
     fr: 'Fréquence_d%27apparition_des_lettres',
     en: 'Letter_frequency',
-    nl: 'Letterfrequentie',
   },
   comparativeLinguistics: {
     fr: 'Linguistique_comparée',
@@ -127,12 +118,15 @@ const WIKI_BASES: Record<Locale, string> = {
 
 /**
  * Get a Wikipedia URL for a concept in the current locale.
- * Falls back to English if the concept isn't available in the current locale.
+ * Falls back to English (including the en.wikipedia.org base) if
+ * the concept isn't available in the requested locale.
  */
 export function wikiUrl(concept: string, locale: Locale): string {
   const articles = WIKI_ARTICLES[concept];
   if (!articles) return `${WIKI_BASES.en}${concept}`;
-  const slug = articles[locale] ?? articles.en ?? concept;
-  const base = WIKI_BASES[locale];
-  return `${base}${slug}`;
+  const slug = articles[locale];
+  if (slug) return `${WIKI_BASES[locale]}${slug}`;
+  // Fall back to English Wikipedia
+  const enSlug = articles.en ?? concept;
+  return `${WIKI_BASES.en}${enSlug}`;
 }
