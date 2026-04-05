@@ -632,7 +632,7 @@ export default function FAQ() {
               {t('faq.further.3b1b' as any)}
             </a>{' '}
             — {t('faq.further.3b1bDesc' as any)}{' '}
-            <span className="text-slate-400">(EN)</span>
+            <span className="text-slate-400">(EN, 3Blue1Brown)</span>
           </li>
           <li>
             <a
@@ -644,19 +644,55 @@ export default function FAQ() {
               {t('faq.further.khan' as any)}
             </a>{' '}
             — {t('faq.further.khanDesc' as any)}{' '}
-            <span className="text-slate-400">(EN)</span>
+            <span className="text-slate-400">(EN, Khan Academy)</span>
           </li>
           <li>
             <a
-              href="https://www.khanacademy.org/computing/computer-science/informationtheory/moderninfotheory/v/information-entropy"
+              href="https://www.youtube.com/watch?v=kD5DHGbkYz0"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
             >
-              {t('faq.further.khanEntropy' as any)}
+              {t('faq.further.passeSci' as any)}
             </a>{' '}
-            — {t('faq.further.khanEntropyDesc' as any)}{' '}
-            <span className="text-slate-400">(EN)</span>
+            — {t('faq.further.passeSciDesc' as any)}{' '}
+            <span className="text-slate-400">(FR, Passe-Science)</span>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=rmBFaNgg4wk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.visElec' as any)}
+            </a>{' '}
+            — {t('faq.further.visElecDesc' as any)}{' '}
+            <span className="text-slate-400">(EN, Visual Electric)</span>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=lr2wyyKCRRM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.esotero' as any)}
+            </a>{' '}
+            — {t('faq.further.esoteroDesc' as any)}{' '}
+            <span className="text-slate-400">(EN, Esoterogeny)</span>
+          </li>
+          <li>
+            <a
+              href="https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.ogPaper' as any)}
+            </a>{' '}
+            — {t('faq.further.ogPaperDesc' as any)}{' '}
+            <span className="text-slate-400">(EN, PDF)</span>
           </li>
         </ul>
       </section>
