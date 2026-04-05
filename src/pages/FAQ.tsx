@@ -695,6 +695,60 @@ export default function FAQ() {
             <span className="text-slate-400">(EN, PDF)</span>
           </li>
         </ul>
+
+        <h3 className="mb-3 mt-6 text-sm font-semibold text-slate-700 sm:text-base">
+          {t('faq.further.academic' as any)}
+        </h3>
+        <ul className="space-y-1.5 text-sm text-slate-600">
+          <li>
+            <a
+              href="https://www.princeton.edu/~wbialek/rome/refs/shannon_51.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.shannon51' as any)}
+            </a>{' '}
+            — {t('faq.further.shannon51Desc' as any)}{' '}
+            <span className="text-slate-400">(PDF)</span>
+          </li>
+          <li>
+            <a
+              href="https://www.mdpi.com/1099-4300/19/6/275"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.bentz' as any)}
+            </a>{' '}
+            — {t('faq.further.bentzDesc' as any)}{' '}
+            <span className="text-slate-400">(open access)</span>
+          </li>
+          <li>
+            <a
+              href="https://journals.plos.org/complexsystems/article?id=10.1371/journal.pcsy.0000032"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.koplenig' as any)}
+            </a>{' '}
+            — {t('faq.further.koplenigDesc' as any)}{' '}
+            <span className="text-slate-400">(open access)</span>
+          </li>
+          <li>
+            <a
+              href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0019875"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline decoration-blue-200 hover:text-blue-800"
+            >
+              {t('faq.further.montemurro' as any)}
+            </a>{' '}
+            — {t('faq.further.montemurroDesc' as any)}{' '}
+            <span className="text-slate-400">(open access)</span>
+          </li>
+        </ul>
       </section>
     </div>
   );

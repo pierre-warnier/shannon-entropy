@@ -172,6 +172,7 @@ const PERIOD_YEARS: Record<string, number> = {
 
 interface TrendLine {
   language: string;
+  type: 'letter' | 'word';
   slope: number;
   intercept: number;
   xMin: number;
@@ -202,24 +203,43 @@ for (const r of results) {
 
 const trends: TrendLine[] = [];
 for (const [lang, items] of byLanguage.entries()) {
-  const withYear = items
-    .filter((e) => e.period in PERIOD_YEARS)
-    .map((e) => ({ x: PERIOD_YEARS[e.period], y: e.letterEntropy }));
-  if (withYear.length < 2) continue;
-  const xs = withYear.map((p) => p.x);
-  const ys = withYear.map((p) => p.y);
-  const reg = linearRegression(xs, ys);
-  if (!reg) continue;
-  trends.push({
-    language: lang,
-    slope: Math.round(reg.slope * 1e8) / 1e8,
-    intercept: Math.round(reg.intercept * 10000) / 10000,
-    xMin: Math.min(...xs),
-    xMax: Math.max(...xs),
-  });
-  console.log(
-    `📈 ${lang.padEnd(15)} trend: slope=${reg.slope.toFixed(8)}  intercept=${reg.intercept.toFixed(4)}`,
-  );
+  const filtered = items.filter((e) => e.period in PERIOD_YEARS);
+  if (filtered.length < 2) continue;
+  const xs = filtered.map((e) => PERIOD_YEARS[e.period]);
+
+  // Letter entropy trend
+  const letterYs = filtered.map((e) => e.letterEntropy);
+  const letterReg = linearRegression(xs, letterYs);
+  if (letterReg) {
+    trends.push({
+      language: lang,
+      type: 'letter',
+      slope: Math.round(letterReg.slope * 1e8) / 1e8,
+      intercept: Math.round(letterReg.intercept * 10000) / 10000,
+      xMin: Math.min(...xs),
+      xMax: Math.max(...xs),
+    });
+    console.log(
+      `📈 ${lang.padEnd(15)} letter trend: slope=${letterReg.slope.toFixed(8)}  intercept=${letterReg.intercept.toFixed(4)}`,
+    );
+  }
+
+  // Word entropy trend
+  const wordYs = filtered.map((e) => e.wordEntropy);
+  const wordReg = linearRegression(xs, wordYs);
+  if (wordReg) {
+    trends.push({
+      language: lang,
+      type: 'word',
+      slope: Math.round(wordReg.slope * 1e8) / 1e8,
+      intercept: Math.round(wordReg.intercept * 10000) / 10000,
+      xMin: Math.min(...xs),
+      xMax: Math.max(...xs),
+    });
+    console.log(
+      `📈 ${lang.padEnd(15)} word trend:   slope=${wordReg.slope.toFixed(8)}  intercept=${wordReg.intercept.toFixed(4)}`,
+    );
+  }
 }
 
 const trendsPath = resolve(ROOT, 'src/data/precomputed_trends.json');

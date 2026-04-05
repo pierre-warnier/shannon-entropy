@@ -1,78 +1,177 @@
 [
   {
     "language": "French",
+    "type": "letter",
     "slope": -0.00021731,
     "intercept": 4.4061,
     "xMin": 1650,
     "xMax": 1850
   },
   {
+    "language": "French",
+    "type": "word",
+    "slope": 0.00229615,
+    "intercept": 5.3652,
+    "xMin": 1650,
+    "xMax": 1850
+  },
+  {
     "language": "Latin",
+    "type": "letter",
     "slope": -0.0000648,
     "intercept": 4.0146,
     "xMin": -50,
     "xMax": 1250
   },
   {
+    "language": "Latin",
+    "type": "word",
+    "slope": -0.00105912,
+    "intercept": 11.6113,
+    "xMin": -50,
+    "xMax": 1250
+  },
+  {
     "language": "Ancient Greek",
+    "type": "letter",
     "slope": -0.00030951,
     "intercept": 4.0481,
     "xMin": -750,
     "xMax": -350
   },
   {
+    "language": "Ancient Greek",
+    "type": "word",
+    "slope": -0.00349506,
+    "intercept": 8.8207,
+    "xMin": -750,
+    "xMax": -350
+  },
+  {
     "language": "Dutch",
+    "type": "letter",
     "slope": -0.00012566,
     "intercept": 4.3154,
     "xMin": 1650,
     "xMax": 1950
   },
   {
+    "language": "Dutch",
+    "type": "word",
+    "slope": -0.00185783,
+    "intercept": 13.1275,
+    "xMin": 1650,
+    "xMax": 1950
+  },
+  {
     "language": "English",
+    "type": "letter",
     "slope": 0.00001786,
     "intercept": 4.1401,
     "xMin": 1650,
     "xMax": 1850
   },
   {
+    "language": "English",
+    "type": "word",
+    "slope": -0.00084286,
+    "intercept": 10.8188,
+    "xMin": 1650,
+    "xMax": 1850
+  },
+  {
     "language": "Italian",
+    "type": "letter",
     "slope": -0.00001497,
     "intercept": 4.0303,
     "xMin": 1350,
     "xMax": 1950
   },
   {
+    "language": "Italian",
+    "type": "word",
+    "slope": 0.00088383,
+    "intercept": 8.228,
+    "xMin": 1350,
+    "xMax": 1950
+  },
+  {
     "language": "Spanish",
+    "type": "letter",
     "slope": 0.00009084,
     "intercept": 3.8928,
     "xMin": 1550,
     "xMax": 1850
   },
   {
+    "language": "Spanish",
+    "type": "word",
+    "slope": 0.00125978,
+    "intercept": 7.3257,
+    "xMin": 1550,
+    "xMax": 1850
+  },
+  {
     "language": "German",
+    "type": "letter",
     "slope": -0.00008794,
     "intercept": 4.2583,
     "xMin": 1750,
     "xMax": 1950
   },
   {
+    "language": "German",
+    "type": "word",
+    "slope": -0.00055294,
+    "intercept": 10.7071,
+    "xMin": 1750,
+    "xMax": 1950
+  },
+  {
     "language": "Old French",
+    "type": "letter",
     "slope": -0.0001559,
     "intercept": 4.15,
     "xMin": 1050,
     "xMax": 1350
   },
   {
+    "language": "Old French",
+    "type": "word",
+    "slope": -0.00192651,
+    "intercept": 11.4283,
+    "xMin": 1050,
+    "xMax": 1350
+  },
+  {
     "language": "Hebrew",
+    "type": "letter",
     "slope": -4.7e-7,
     "intercept": 4.2563,
     "xMin": -750,
     "xMax": 1950
   },
   {
+    "language": "Hebrew",
+    "type": "word",
+    "slope": 0.00051583,
+    "intercept": 10.6004,
+    "xMin": -750,
+    "xMax": 1950
+  },
+  {
     "language": "Arabic",
+    "type": "letter",
     "slope": -0.00006145,
     "intercept": 4.3294,
+    "xMin": 750,
+    "xMax": 1350
+  },
+  {
+    "language": "Arabic",
+    "type": "word",
+    "slope": 0.00272581,
+    "intercept": 9.0463,
     "xMin": 750,
     "xMax": 1350
   }

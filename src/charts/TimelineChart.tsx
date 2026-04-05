@@ -17,13 +17,14 @@ export interface TimelineEntry {
 
 interface TrendLine {
   language: string;
+  type: 'letter' | 'word';
   slope: number;
   intercept: number;
   xMin: number;
   xMax: number;
 }
 
-const trends = trendData as TrendLine[];
+const allTrends = trendData as TrendLine[];
 
 interface TimelineChartProps {
   entries: TimelineEntry[];
@@ -150,11 +151,12 @@ export function TimelineChart({
     });
   }
 
-  // Add precomputed trend lines (always present to keep trace count stable)
-  for (const trend of trends) {
+  // Add precomputed trend lines for the current mode
+  const modeTrends = allTrends.filter((tr) => tr.type === mode);
+  for (const trend of modeTrends) {
     const color = LANGUAGE_COLORS[trend.language] ?? '#64748b';
     const isHidden = hiddenLangs.has(trend.language);
-    const showThis = showTrends && mode === 'letter' && !isHidden;
+    const showThis = showTrends && !isHidden;
     const yStart = trend.slope * trend.xMin + trend.intercept;
     const yEnd = trend.slope * trend.xMax + trend.intercept;
     data.push({
