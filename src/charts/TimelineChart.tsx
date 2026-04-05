@@ -165,7 +165,7 @@ export function TimelineChart({
       line: { color: color + '60', width: 2, dash: 'dot' },
       legendgroup: trend.language,
       showlegend: false,
-      visible: showThis ? true : 'legendonly',
+      visible: showThis,
       hoverinfo: 'skip',
     } as Data);
   }
